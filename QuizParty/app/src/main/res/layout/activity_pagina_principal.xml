@@ -26,56 +26,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="50dp" />
+        app:layout_constraintGuide_percent="0.07467057" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="633dp" />
+        app:layout_constraintGuide_percent="0.9267936" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="50dp" />
+        app:layout_constraintGuide_percent="0.124087594" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="50dp" />
+        app:layout_constraintGuide_percent="0.8783455" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="233dp" />
+        app:layout_constraintGuide_percent="0.34114203" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="333dp" />
+        app:layout_constraintGuide_percent="0.4875549" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="433dp" />
+        app:layout_constraintGuide_percent="0.6339678" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="533dp" />
+        app:layout_constraintGuide_percent="0.78038067" />
 
     <Button
         android:id="@+id/botonJugar"
@@ -88,6 +88,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/jugar"
+        android:onClick="irAMenuPartidas"
         android:textAllCaps="false"
         android:textSize="44sp"
         android:background="@drawable/tarjeta"

@@ -6,5 +6,6 @@
     <string name="continuar">Continuar</string>
     <string name="editar">Editar</string>
     <string name="desconocido">\?</string>
+    <string name="quiz_party_header">QUIZ PARTY</string>
 
 </resources>
