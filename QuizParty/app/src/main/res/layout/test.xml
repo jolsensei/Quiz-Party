@@ -16,7 +16,7 @@
             android:background="@drawable/tarjeta">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tituloQuiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -35,7 +35,7 @@
 
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/preguntas"
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:layout_marginStart="8dp"
