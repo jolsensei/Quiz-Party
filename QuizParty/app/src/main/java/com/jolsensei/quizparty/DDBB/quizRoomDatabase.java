@@ -1,9 +1,11 @@
-package com.jolsensei.quizparty.DDBB.Quiz;
+package com.jolsensei.quizparty.DDBB;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
+
+import com.jolsensei.quizparty.DDBB.Quiz.quizEntity;
 
 @Database(entities = {quizEntity.class, quizEntity.class}, version = 1)
 
