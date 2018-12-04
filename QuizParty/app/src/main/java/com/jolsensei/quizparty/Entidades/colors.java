@@ -1,4 +1,4 @@
-package com.jolsensei.quizparty.DDBB.Question;
+package com.jolsensei.quizparty.Entidades;
 
 public enum colors {
 

@@ -1,11 +1,12 @@
-package com.jolsensei.quizparty;
+package com.jolsensei.quizparty.Views;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+
+import com.jolsensei.quizparty.R;
+import com.jolsensei.quizparty.Views.menuNuevaPartida;
 
 public class paginaPrincipal extends AppCompatActivity {
 
