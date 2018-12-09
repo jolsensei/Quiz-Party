@@ -21,7 +21,7 @@ public class defaultQuiz {
         questionList.add(new Question("¿Como se denominan los mangas dibujados a base de 4 viñetas?","4-koma",colors.BLUE,difficulties.EASY));
         questionList.add(new Question("Cual es el nombre del primer opening de One Piece","We are",colors.BROWN,difficulties.EASY));
         questionList.add(new Question("¿Cual era el equipo al que pertenecian Naruto, Sakura y Sasuke?","7",colors.PINK,difficulties.EASY));
-        questionList.add(new Question("¿En Shingeki no Kyojin, poseen aparto reproductor los titanes?","No",colors.YELLOW,difficulties.EASY));
+        questionList.add(new Question("¿En Shingeki no Kyojin, poseen aparato reproductor los titanes?","No",colors.YELLOW,difficulties.EASY));
 
         list.add(new Quiz("Anime y Manga","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
 
