@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapter;
 import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.listadoQuizVM;
@@ -23,6 +24,7 @@ public class menuNuevaPartida extends AppCompatActivity {
     private RecyclerView listadoQuiz;
 
     private listadoQuizVM miVM;
+    private listadoQuizAdapter miAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,13 @@ public class menuNuevaPartida extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
 
         listadoQuiz.setLayoutManager(llm);
+
+        miAdapter = new listadoQuizAdapter();
+        miAdapter.setQuizData(miVM.getListadoQuiz().getValue());
+
+        listadoQuiz.setAdapter(miAdapter);
+
+
     }
 
     public void volverAtras(View view) {

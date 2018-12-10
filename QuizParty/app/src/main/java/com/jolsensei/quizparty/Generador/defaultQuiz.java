@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class defaultQuiz {
 
 
-    public ArrayList<Quiz> defaultQuiz(){
+    public ArrayList<Quiz> defaultQuizGenerator(){
 
         ArrayList<Quiz> list = new ArrayList<>();
 
@@ -24,6 +24,8 @@ public class defaultQuiz {
         questionList.add(new Question("¿En Shingeki no Kyojin, poseen aparato reproductor los titanes?","No",colors.YELLOW,difficulties.EASY));
 
         list.add(new Quiz("Anime y Manga","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
+        list.add(new Quiz("Mango y Animu","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
+        list.add(new Quiz("Monitos chinos","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
 
         return list;
     }
