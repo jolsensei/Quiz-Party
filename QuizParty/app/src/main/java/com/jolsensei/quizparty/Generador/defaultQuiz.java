@@ -26,6 +26,8 @@ public class defaultQuiz {
         list.add(new Quiz("Anime y Manga","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
         list.add(new Quiz("Mango y Animu","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
         list.add(new Quiz("Monitos chinos","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
+        list.add(new Quiz("Dibujitos Gapón","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
+        list.add(new Quiz("Illo que funciona","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
 
         return list;
     }
