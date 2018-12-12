@@ -11,15 +11,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapter;
+import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapterOnClickHandler;
 import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.listadoQuizVM;
 
 import java.util.ArrayList;
 
-public class menuNuevaPartida extends AppCompatActivity {
+public class menuNuevaPartida extends AppCompatActivity implements listadoQuizAdapterOnClickHandler, View.OnClickListener {
 
     private RecyclerView listadoQuiz;
 
@@ -43,7 +45,7 @@ public class menuNuevaPartida extends AppCompatActivity {
 
         listadoQuiz.setLayoutManager(llm);
 
-        miAdapter = new listadoQuizAdapter();
+        miAdapter = new listadoQuizAdapter(this);
         miAdapter.setQuizData(miVM.getListadoQuiz().getValue());
 
         listadoQuiz.setAdapter(miAdapter);
@@ -57,7 +59,32 @@ public class menuNuevaPartida extends AppCompatActivity {
 
         //startActivity(intent);
 
-        finish();
+        //finish();
+        super.onBackPressed();
 
     }
+
+    @Override
+    public void onClick(View view) {
+
+
+        Toast.makeText(this, "Probandooooo", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public boolean onLongClick(int adapterPosition) {
+
+        Toast.makeText(this, "Probando long", Toast.LENGTH_SHORT).show();
+
+        return true;
+    }
+
+    @Override
+    public void onClick(int adapterPosition) {
+
+        Toast.makeText(this, "Probando", Toast.LENGTH_SHORT).show();
+
+    }
+
 }

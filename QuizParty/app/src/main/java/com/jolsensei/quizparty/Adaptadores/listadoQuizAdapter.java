@@ -17,9 +17,17 @@ import java.util.ArrayList;
 public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.QuizViewHolder> {
 
     private ArrayList<Quiz> listadoQuiz;
+    private final listadoQuizAdapterOnClickHandler listadoQuizHandler;
+
+    public listadoQuizAdapter(listadoQuizAdapterOnClickHandler clickHandler){
+
+        listadoQuizHandler = clickHandler;
+
+    }
 
 
-    public static class QuizViewHolder extends RecyclerView.ViewHolder {
+     class QuizViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener,
+                                                                     View.OnClickListener  {
         CardView cv;
         TextView name;
         TextView easyQuestions;
@@ -35,6 +43,17 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
             hardQuestions = (TextView)itemView.findViewById(R.id.numeroDificiles);
 
         }
+
+         @Override
+         public boolean onLongClick(View view) {
+             return listadoQuizHandler.onLongClick(getAdapterPosition());
+         }
+
+         @Override
+         public void onClick(View view) {
+             listadoQuizHandler.onClick(getAdapterPosition());
+         }
+
     }
 
 
@@ -48,7 +67,7 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
         boolean shouldAttachToParentImmediately = false;
 
         View view = inflater.inflate(layoutIdForListItem, parent, shouldAttachToParentImmediately);
-        QuizViewHolder viewHolder = new QuizViewHolder(view);
+        listadoQuizAdapter.QuizViewHolder viewHolder = new listadoQuizAdapter.QuizViewHolder(view);
 
 
         return viewHolder;
