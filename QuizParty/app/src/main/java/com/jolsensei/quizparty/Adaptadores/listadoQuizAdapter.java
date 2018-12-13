@@ -37,6 +37,9 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
 
             super(itemView);
 
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+
             cv = (CardView)itemView.findViewById(R.id.cardQuiz);
             name = (TextView)itemView.findViewById(R.id.tituloQuiz);
             easyQuestions = (TextView)itemView.findViewById(R.id.numeroFaciles);

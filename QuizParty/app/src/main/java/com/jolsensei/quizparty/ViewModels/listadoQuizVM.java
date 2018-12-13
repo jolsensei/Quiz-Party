@@ -8,7 +8,7 @@ import com.jolsensei.quizparty.Generador.defaultQuiz;
 
 import java.util.ArrayList;
 
-public class listadoQuizVM extends ViewModel {
+public class listadoQuizVM extends ViewModel  {
 
 
     private MutableLiveData<ArrayList<Quiz>> _listadoQuiz;

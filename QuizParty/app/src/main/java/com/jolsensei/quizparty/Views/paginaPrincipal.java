@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.jolsensei.quizparty.R;
-import com.jolsensei.quizparty.Views.menuNuevaPartida;
 
 public class paginaPrincipal extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class paginaPrincipal extends AppCompatActivity {
 
     public void irAMenuPartidas(View view) {
 
-        Intent intent = new Intent(this, menuNuevaPartida.class);
+        Intent intent = new Intent(this, paginaListadoQuizs.class);
 
         startActivity(intent);
 
