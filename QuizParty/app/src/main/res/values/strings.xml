@@ -8,5 +8,7 @@
     <string name="desconocido">\?</string>
     <string name="quiz_party_header">QUIZ PARTY</string>
     <string name="preguntas">Preguntas</string>
+    <string name="menu_option_editar">Editar</string>
+    <string name="menu_option_borrar">Borrar</string>
 
 </resources>

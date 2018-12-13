@@ -65,7 +65,7 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
     public QuizViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         Context context = parent.getContext();
-        int layoutIdForListItem = R.layout.test;
+        int layoutIdForListItem = R.layout.card;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 
@@ -82,8 +82,8 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
         Quiz currentQuiz = listadoQuiz.get(position);
 
         holder.name.setText(currentQuiz.getName());
-        holder.easyQuestions.setText(String.valueOf(currentQuiz.getQuestions().size()));
-        holder.hardQuestions.setText(String.valueOf(currentQuiz.getQuestions().size()));
+        holder.easyQuestions.setText(String.valueOf(currentQuiz.getEasyQuestions().size()));
+        holder.hardQuestions.setText(String.valueOf(currentQuiz.getHardQuestions().size()));
 
 
     }

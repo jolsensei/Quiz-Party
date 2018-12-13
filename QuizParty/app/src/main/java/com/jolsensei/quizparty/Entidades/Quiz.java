@@ -11,9 +11,10 @@ public class Quiz {
     private String yellowDef;
     private String brownDef;
     private String pinkDef;
-    private ArrayList<Question> questions;
+    private ArrayList<Question> easyQuestions;
+    private ArrayList<Question> hardQuestions;
 
-    public Quiz(String name, String orangeDef, String greenDef, String blueDef, String yellowDef, String brownDef, String pinkDef, ArrayList<Question> questions) {
+    public Quiz(String name, String orangeDef, String greenDef, String blueDef, String yellowDef, String brownDef, String pinkDef, ArrayList<Question> easyQuestions, ArrayList<Question> hardQuestions) {
         this.name = name;
         this.orangeDef = orangeDef;
         this.greenDef = greenDef;
@@ -21,7 +22,8 @@ public class Quiz {
         this.yellowDef = yellowDef;
         this.brownDef = brownDef;
         this.pinkDef = pinkDef;
-        this.questions = questions;
+        this.easyQuestions = easyQuestions;
+        this.hardQuestions = hardQuestions;
     }
 
     public String getName() {
@@ -80,11 +82,19 @@ public class Quiz {
         this.pinkDef = pinkDef;
     }
 
-    public ArrayList<Question> getQuestions() {
-        return questions;
+    public ArrayList<Question> getEasyQuestions() {
+        return easyQuestions;
     }
 
-    public void setQuestions(ArrayList<Question> questions) {
-        this.questions = questions;
+    public void setEasyQuestions(ArrayList<Question> easyQuestions) {
+        this.easyQuestions = easyQuestions;
+    }
+
+    public ArrayList<Question> getHardQuestions() {
+        return hardQuestions;
+    }
+
+    public void setHardQuestions(ArrayList<Question> hardQuestions) {
+        this.hardQuestions = hardQuestions;
     }
 }

@@ -14,20 +14,21 @@ public class defaultQuiz {
 
         ArrayList<Quiz> list = new ArrayList<>();
 
-        ArrayList<Question> questionList = new ArrayList<>();
+        ArrayList<Question> questionListEasy = new ArrayList<>();
+        ArrayList<Question> questionListHard = new ArrayList<>();
 
-        questionList.add(new Question("¿En que famoso manga/anime aparece la isla de Skypea?","One Piece",colors.GREEN,difficulties.EASY));
-        questionList.add(new Question("¿Cual es la duracion media de un capitulo de anime?","20 minutos",colors.ORANGE,difficulties.EASY));
-        questionList.add(new Question("¿Como se denominan los mangas dibujados a base de 4 viñetas?","4-koma",colors.BLUE,difficulties.EASY));
-        questionList.add(new Question("Cual es el nombre del primer opening de One Piece","We are",colors.BROWN,difficulties.EASY));
-        questionList.add(new Question("¿Cual era el equipo al que pertenecian Naruto, Sakura y Sasuke?","7",colors.PINK,difficulties.EASY));
-        questionList.add(new Question("¿En Shingeki no Kyojin, poseen aparato reproductor los titanes?","No",colors.YELLOW,difficulties.EASY));
+        questionListEasy.add(new Question("¿En que famoso manga/anime aparece la isla de Skypea?","One Piece",colors.GREEN,difficulties.EASY));
+        questionListEasy.add(new Question("¿Cual es la duracion media de un capitulo de anime?","20 minutos",colors.ORANGE,difficulties.EASY));
+        questionListEasy.add(new Question("¿Como se denominan los mangas dibujados a base de 4 viñetas?","4-koma",colors.BLUE,difficulties.EASY));
+        questionListEasy.add(new Question("Cual es el nombre del primer opening de One Piece","We are",colors.BROWN,difficulties.EASY));
+        questionListEasy.add(new Question("¿Cual era el equipo al que pertenecian Naruto, Sakura y Sasuke?","7",colors.PINK,difficulties.EASY));
+        questionListEasy.add(new Question("En Shingeki no Kyojin, ¿poseen aparato reproductor los titanes?","No",colors.YELLOW,difficulties.EASY));
 
-        list.add(new Quiz("Anime y Manga","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
-        list.add(new Quiz("Mango y Animu","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
-        list.add(new Quiz("Monitos chinos","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
-        list.add(new Quiz("Dibujitos Gapón","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
-        list.add(new Quiz("Illo que funciona","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionList));
+        list.add(new Quiz("Anime y Manga","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionListEasy, questionListHard));
+        list.add(new Quiz("Mango y Animu","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionListEasy, questionListHard));
+        list.add(new Quiz("Monitos chinos","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionListEasy, questionListHard));
+        list.add(new Quiz("Dibujitos Gapón","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionListEasy, questionListHard));
+        list.add(new Quiz("Illo que funciona","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionListEasy, questionListHard));
 
         return list;
     }
