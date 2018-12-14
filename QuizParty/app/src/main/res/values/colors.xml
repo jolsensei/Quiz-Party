@@ -16,7 +16,11 @@
 
 
     <color name="grisTarjeta">#607D8B</color>
+    <color name="grisTarjetaTrasparente">#CC607D8B</color>
     <color name="grisLetra">#9E9E9E</color>
+
+
+    <color name="botonAdd">#212121</color>
 
 
     <color name="blancoFondo">#FAFAFA</color>

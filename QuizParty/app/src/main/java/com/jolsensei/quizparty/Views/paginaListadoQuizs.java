@@ -22,6 +22,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
     private RecyclerView listadoQuiz;
     private LinearLayout menuOpciones;
+    private View lockScreen;
 
     private listadoQuizVM miVM;
     private listadoQuizAdapter miAdapter;
@@ -35,7 +36,6 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagina_listado_quizs);
 
-        menuOpciones = (LinearLayout) findViewById(R.id.menuEditarBorrar);
 
         miVM = ViewModelProviders.of(this).get(listadoQuizVM.class);
 
@@ -69,27 +69,14 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
     @Override
     public void onClick(View view) {
 
-        if (view.getId() != R.id.menuEditarBorrar ){
 
-            menuOpciones.setVisibility(View.GONE);
 
-        }
-
-        Toast.makeText(this, "Probandooooo", Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public boolean onLongClick(int adapterPosition) {
 
-        Context context = this;
-
-
-        //menuOpciones.animate().translationY(0);
-        menuOpciones.setVisibility(View.VISIBLE);
-       // Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_up);
-       // menuOpciones.startAnimation(slideUp);
-        menuVisible = true;
 
 
 
@@ -99,18 +86,6 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
     @Override
     public void onClick(int adapterPosition) {
 
-        Context context = this;
-
-        if (menuVisible){
-
-
-            menuOpciones.setVisibility(View.GONE);
-            menuVisible = false;
-
-        }else {
-
-            Toast.makeText(this, "Probando", Toast.LENGTH_SHORT).show();
-        }
 
 
 
