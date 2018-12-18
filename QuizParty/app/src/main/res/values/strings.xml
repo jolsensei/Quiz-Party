@@ -10,5 +10,8 @@
     <string name="preguntas">Preguntas</string>
     <string name="menu_option_editar">Editar</string>
     <string name="menu_option_borrar">Borrar</string>
+    <string name="opciones_modal">Opciones</string>
+    <string name="editar_modal">Editar</string>
+    <string name="borrar_modal">Borrar</string>
 
 </resources>

@@ -31,6 +31,25 @@ public class listadoQuizVM extends ViewModel  {
     }
 
     public void setListadoQuiz(MutableLiveData<ArrayList<Quiz>> listadoQuiz) {
+
         this._listadoQuiz = listadoQuiz;
+
+    }
+
+    public void borrarQuiz(int posicion){
+
+        try {
+
+            _listadoQuiz.getValue().remove(posicion);
+
+        }catch (NullPointerException e){
+
+            e.printStackTrace();
+
+        }
+
+
+
+
     }
 }

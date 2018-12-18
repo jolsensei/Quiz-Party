@@ -1,7 +1,9 @@
 package com.jolsensei.quizparty.Views;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,10 +17,16 @@ import android.widget.Toast;
 
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapter;
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapterOnClickHandler;
+import com.jolsensei.quizparty.Entidades.Quiz;
+import com.jolsensei.quizparty.Entidades.opcionMenu;
+import com.jolsensei.quizparty.Menus.BottomSheetDialog;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.listadoQuizVM;
 
-public class paginaListadoQuizs extends AppCompatActivity implements listadoQuizAdapterOnClickHandler, View.OnClickListener {
+import java.util.ArrayList;
+
+public class paginaListadoQuizs extends AppCompatActivity implements listadoQuizAdapterOnClickHandler,
+                                                                        View.OnClickListener, BottomSheetDialog.BottomSheetListener {
 
     private RecyclerView listadoQuiz;
     private LinearLayout menuOpciones;
@@ -27,7 +35,18 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
     private listadoQuizVM miVM;
     private listadoQuizAdapter miAdapter;
 
-    private static boolean menuVisible;
+    private static int ultimoSeleccionado;
+
+    final Observer<ArrayList<Quiz>> miVMobserver = new Observer<ArrayList<Quiz>>() {
+        @Override
+        public void onChanged(@Nullable ArrayList<Quiz> quizzes) {
+
+
+
+        }
+    };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +96,10 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
     @Override
     public boolean onLongClick(int adapterPosition) {
 
+        BottomSheetDialog bottomSheet = new BottomSheetDialog();
+        bottomSheet.show(getSupportFragmentManager(), "exampleBottomSheet");
 
+        ultimoSeleccionado = adapterPosition;
 
 
         return true;
@@ -91,4 +113,22 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
     }
 
+    @Override
+    public void onButtonClicked(opcionMenu opcion) {
+
+        if (opcion == opcionMenu.BORRAR){
+
+            miVM.borrarQuiz(ultimoSeleccionado);
+
+
+        }else {
+
+            Toast.makeText(this, opcion.toString(), Toast.LENGTH_SHORT).show();
+
+        }
+
+
+
+
+    }
 }
