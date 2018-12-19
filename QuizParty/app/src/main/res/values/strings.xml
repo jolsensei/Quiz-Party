@@ -13,5 +13,8 @@
     <string name="opciones_modal">Opciones</string>
     <string name="editar_modal">Editar</string>
     <string name="borrar_modal">Borrar</string>
+    <string name="elija_dificultad">Elija dificultad</string>
+    <string name="dif_cil">Difícil</string>
+    <string name="f_cil">Fácil</string>
 
 </resources>

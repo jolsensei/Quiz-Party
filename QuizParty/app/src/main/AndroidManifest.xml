@@ -21,7 +21,7 @@
         <activity
             android:name=".Views.paginaListadoQuizs"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Views.DialogDificultad"></activity>
+        <activity android:name=".Views.DialogDificultad" android:theme="@style/MyTheme"></activity>
     </application>
 
 </manifest>

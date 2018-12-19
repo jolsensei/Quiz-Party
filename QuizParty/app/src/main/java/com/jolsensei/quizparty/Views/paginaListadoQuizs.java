@@ -3,6 +3,7 @@ package com.jolsensei.quizparty.Views;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -110,7 +111,9 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
     @Override
     public void onClick(int adapterPosition) {
 
+        Intent intent = new Intent(this, DialogDificultad.class);
 
+        startActivity(intent);
 
 
     }

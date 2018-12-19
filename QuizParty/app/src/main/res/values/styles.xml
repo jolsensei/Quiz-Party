@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@color/trasparente</item>
+    </style>
+
+
 </resources>
