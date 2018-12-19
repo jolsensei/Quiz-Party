@@ -97,6 +97,7 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
 
 
     public void setQuizData(ArrayList<Quiz> listado){
+
         this.listadoQuiz = listado;
         notifyDataSetChanged();
     }

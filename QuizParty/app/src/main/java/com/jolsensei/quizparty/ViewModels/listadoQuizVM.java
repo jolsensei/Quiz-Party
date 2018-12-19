@@ -7,6 +7,7 @@ import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.Generador.defaultQuiz;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class listadoQuizVM extends ViewModel  {
 
@@ -38,9 +39,16 @@ public class listadoQuizVM extends ViewModel  {
 
     public void borrarQuiz(int posicion){
 
-        try {
+        ArrayList<Quiz> nuevo = _listadoQuiz.getValue();
 
-            _listadoQuiz.getValue().remove(posicion);
+
+
+        try {
+            nuevo.remove(posicion);
+
+            _listadoQuiz.setValue(nuevo);
+
+
 
         }catch (NullPointerException e){
 
@@ -49,7 +57,7 @@ public class listadoQuizVM extends ViewModel  {
         }
 
 
-
-
     }
+
+
 }
