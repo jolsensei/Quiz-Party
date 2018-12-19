@@ -29,8 +29,6 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
                                                                         View.OnClickListener, BottomSheetDialog.BottomSheetListener {
 
     private RecyclerView listadoQuiz;
-    private LinearLayout menuOpciones;
-    private View lockScreen;
 
     private listadoQuizVM miVM;
     private listadoQuizAdapter miAdapter;
@@ -68,7 +66,6 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
 
                 miAdapter.setQuizData(quizzes);
-
 
 
             }

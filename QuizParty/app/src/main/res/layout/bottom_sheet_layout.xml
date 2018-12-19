@@ -10,13 +10,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/opciones_modal"
-            android:layout_marginBottom="20dp"
-            android:textSize="20sp"
-            android:textColor="@color/grisLetra"/>
 
         <Button
             android:id="@+id/botonEditarModal"
