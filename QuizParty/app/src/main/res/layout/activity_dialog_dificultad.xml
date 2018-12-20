@@ -30,20 +30,20 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
 
-                <TextView
-                    android:id="@+id/iconoFaciles"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/facil"
-                    app:layout_constraintBottom_toTopOf="@+id/numeroFaciles"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline10"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/guideline13" />
+    <TextView
+        android:id="@+id/iconoFaciles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/facil"
+        app:layout_constraintBottom_toTopOf="@+id/numeroFaciles"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
                 <TextView
                     android:id="@+id/iconoDificiles"
@@ -71,7 +71,7 @@
                     android:layout_marginBottom="16dp"
                     android:text="@string/f_cil"
                     android:textColor="@color/blancoFondo"
-                    android:textSize="22sp"
+                    android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline10"
                     app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
                     android:layout_marginBottom="16dp"
                     android:text="@string/dif_cil"
                     android:textColor="@color/blancoFondo"
-                    android:textSize="22sp"
+                    android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline10"

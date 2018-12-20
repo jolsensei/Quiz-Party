@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Quiz Party</string>
 
-    <string name="quiz_party">QUIZ\nPARTY</string>
+    <string name="quiz_party">QUIZ PARTY</string>
     <string name="jugar">Jugar</string>
     <string name="continuar">Continuar</string>
     <string name="editar">Editar</string>
