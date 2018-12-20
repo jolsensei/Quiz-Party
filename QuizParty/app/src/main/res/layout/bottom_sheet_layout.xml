@@ -15,8 +15,8 @@
             android:id="@+id/botonEditarModal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/editar_modal"
             android:background="@color/trasparente"
+            android:text="@string/editar_modal"
             android:textAllCaps="false" />
 
         <Button

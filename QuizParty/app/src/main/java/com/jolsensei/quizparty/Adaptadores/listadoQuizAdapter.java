@@ -103,6 +103,14 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
     }
 
 
+    public void borrar(int posicion){
+
+        this.listadoQuiz.remove(posicion);
+        notifyItemRemoved(posicion);
+
+    }
+
+
 
 
 

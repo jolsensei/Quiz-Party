@@ -5,9 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+
 import com.jolsensei.quizparty.R;
 
+
 public class paginaPrincipal extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +19,10 @@ public class paginaPrincipal extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_pagina_principal);
+
+
+
+
     }
 
 

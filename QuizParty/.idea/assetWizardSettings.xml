@@ -65,7 +65,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/home/usuario/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_add_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_fiber_manual_record_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -75,8 +75,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="add" />
-                            <entry key="sourceFile" value="$USER_HOME$" />
+                            <entry key="outputName" value="ic_corner_image" />
+                            <entry key="sourceFile" value="C:\Users\jolsensei" />
                           </map>
                         </option>
                       </PersistentState>

@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Views.DialogDificultad"
-    android:id="@+id/layoutDialogDificultad"
-    android:background="@drawable/tarjeta">
+    android:id="@+id/layoutDD"
+    android:background="@drawable/tarjetadialog">
 
                 <TextView
                     android:id="@+id/textoDificultad"
@@ -20,7 +20,7 @@
                     android:layout_marginRight="32dp"
                     android:layout_marginBottom="32dp"
                     android:text="@string/elija_dificultad"
-                    android:textColor="@color/blancoFondo"
+                    android:textColor="@color/grisLetra"
                     android:textSize="28sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guideline13"
@@ -70,7 +70,7 @@
                     android:layout_marginRight="32dp"
                     android:layout_marginBottom="16dp"
                     android:text="@string/f_cil"
-                    android:textColor="@color/blancoFondo"
+                    android:textColor="@color/grisLetra"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -87,7 +87,7 @@
                     android:layout_marginRight="32dp"
                     android:layout_marginBottom="16dp"
                     android:text="@string/dif_cil"
-                    android:textColor="@color/blancoFondo"
+                    android:textColor="@color/grisLetra"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -1,9 +1,11 @@
 package com.jolsensei.quizparty.Views;
 
+import android.animation.LayoutTransition;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
@@ -79,11 +82,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
     public void volverAtras(View view) {
 
-        //Intent intent = new Intent(this, paginaPrincipal.class);
 
-        //startActivity(intent);
-
-        //finish();
         super.onBackPressed();
 
     }
@@ -123,7 +122,9 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
         if (opcion == opcionMenu.BORRAR){
 
-            miVM.borrarQuiz(ultimoSeleccionado);
+
+            miAdapter.borrar(ultimoSeleccionado);
+            //miVM.borrarQuiz(ultimoSeleccionado);
 
 
         }else {
