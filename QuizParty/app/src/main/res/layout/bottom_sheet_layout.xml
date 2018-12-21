@@ -17,6 +17,8 @@
             android:layout_height="wrap_content"
             android:background="@color/trasparente"
             android:text="@string/editar_modal"
+            android:textColor="@color/grisLetra"
+            android:textSize="20sp"
             android:textAllCaps="false" />
 
         <Button
@@ -24,6 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/borrar_modal"
+            android:textColor="@color/grisLetra"
+            android:textSize="20sp"
             android:background="@color/trasparente"
             android:textAllCaps="false" />
 

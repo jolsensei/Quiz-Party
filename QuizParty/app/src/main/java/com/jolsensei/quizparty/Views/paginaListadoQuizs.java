@@ -64,19 +64,20 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
         listadoQuiz.setAdapter(miAdapter);
 
-        final Observer<ArrayList<Quiz>> miVMobserver = new Observer<ArrayList<Quiz>>() {
-            @Override
-            public void onChanged(@Nullable ArrayList<Quiz> quizzes) {
-
-
-                miAdapter.setQuizData(quizzes);
-
-
-            }
-        };
-
-
-        miVM.getListadoQuiz().observe(this, miVMobserver);
+//        final Observer<ArrayList<Quiz>> miVMobserver = new Observer<ArrayList<Quiz>>() {
+//            @Override
+//            public void onChanged(@Nullable ArrayList<Quiz> quizzes) {
+//
+//
+//                miAdapter.setQuizData(quizzes);
+//
+//
+//
+//            }
+//        };
+//
+//
+//        miVM.getListadoQuiz().observe(this, miVMobserver);
 
     }
 
@@ -124,7 +125,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
 
             miAdapter.borrar(ultimoSeleccionado);
-            //miVM.borrarQuiz(ultimoSeleccionado);
+            //miVM.getListadoQuiz().getValue();
 
 
         }else {

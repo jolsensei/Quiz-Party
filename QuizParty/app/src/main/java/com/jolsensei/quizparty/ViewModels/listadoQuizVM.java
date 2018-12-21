@@ -37,27 +37,6 @@ public class listadoQuizVM extends ViewModel  {
 
     }
 
-    public void borrarQuiz(int posicion){
-
-        ArrayList<Quiz> nuevo = _listadoQuiz.getValue();
-
-
-
-        try {
-            nuevo.remove(posicion);
-
-            _listadoQuiz.setValue(nuevo);
-
-
-
-        }catch (NullPointerException e){
-
-            e.printStackTrace();
-
-        }
-
-
-    }
 
 
 }
