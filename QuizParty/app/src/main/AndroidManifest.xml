@@ -20,8 +20,11 @@
         </activity>
         <activity
             android:name=".Views.paginaListadoQuizs"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".Views.DialogDificultad" android:theme="@style/MyTheme"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Views.DialogDificultad"
+            android:theme="@style/MyTheme" />
+        <activity android:name=".Views.jugandoQuiz"></activity>
     </application>
 
 </manifest>

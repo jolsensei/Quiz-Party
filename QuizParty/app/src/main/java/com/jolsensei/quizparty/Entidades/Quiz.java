@@ -1,8 +1,11 @@
 package com.jolsensei.quizparty.Entidades;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Quiz {
+public class Quiz implements Parcelable {
 
     private String name;
     private String orangeDef;
@@ -97,4 +100,48 @@ public class Quiz {
     public void setHardQuestions(ArrayList<Question> hardQuestions) {
         this.hardQuestions = hardQuestions;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeString(this.orangeDef);
+        dest.writeString(this.greenDef);
+        dest.writeString(this.blueDef);
+        dest.writeString(this.yellowDef);
+        dest.writeString(this.brownDef);
+        dest.writeString(this.pinkDef);
+        dest.writeList(this.easyQuestions);
+        dest.writeList(this.hardQuestions);
+    }
+
+    protected Quiz(Parcel in) {
+        this.name = in.readString();
+        this.orangeDef = in.readString();
+        this.greenDef = in.readString();
+        this.blueDef = in.readString();
+        this.yellowDef = in.readString();
+        this.brownDef = in.readString();
+        this.pinkDef = in.readString();
+        this.easyQuestions = new ArrayList<Question>();
+        in.readList(this.easyQuestions, Question.class.getClassLoader());
+        this.hardQuestions = new ArrayList<Question>();
+        in.readList(this.hardQuestions, Question.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Quiz> CREATOR = new Parcelable.Creator<Quiz>() {
+        @Override
+        public Quiz createFromParcel(Parcel source) {
+            return new Quiz(source);
+        }
+
+        @Override
+        public Quiz[] newArray(int size) {
+            return new Quiz[size];
+        }
+    };
 }

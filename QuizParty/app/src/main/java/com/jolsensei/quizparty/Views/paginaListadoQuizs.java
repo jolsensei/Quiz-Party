@@ -1,27 +1,21 @@
 package com.jolsensei.quizparty.Views;
 
-import android.animation.LayoutTransition;
-import android.arch.lifecycle.Observer;
+
+import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
+
 import android.widget.Toast;
 
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapter;
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapterOnClickHandler;
-import com.jolsensei.quizparty.Entidades.Quiz;
+
+import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.Entidades.opcionMenu;
 import com.jolsensei.quizparty.Menus.BottomSheetDialog;
 import com.jolsensei.quizparty.R;
@@ -64,20 +58,6 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
         listadoQuiz.setAdapter(miAdapter);
 
-//        final Observer<ArrayList<Quiz>> miVMobserver = new Observer<ArrayList<Quiz>>() {
-//            @Override
-//            public void onChanged(@Nullable ArrayList<Quiz> quizzes) {
-//
-//
-//                miAdapter.setQuizData(quizzes);
-//
-//
-//
-//            }
-//        };
-//
-//
-//        miVM.getListadoQuiz().observe(this, miVMobserver);
 
     }
 
@@ -99,10 +79,10 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
     @Override
     public boolean onLongClick(int adapterPosition) {
 
+        ultimoSeleccionado = adapterPosition;
+
         BottomSheetDialog bottomSheet = new BottomSheetDialog();
         bottomSheet.show(getSupportFragmentManager(), "exampleBottomSheet");
-
-        ultimoSeleccionado = adapterPosition;
 
 
         return true;
@@ -111,11 +91,34 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
     @Override
     public void onClick(int adapterPosition) {
 
+        ultimoSeleccionado = adapterPosition;
+
         Intent intent = new Intent(this, DialogDificultad.class);
 
-        startActivity(intent);
+        startActivityForResult(intent, 1);
 
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Intent intent = new Intent(this, jugandoQuiz.class);
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+
+                String result = data.getStringExtra("result");
+
+
+                intent.putExtra("quiz", miAdapter.obtenerQuizSegunPosicion(ultimoSeleccionado));
+                intent.putExtra("dificulty", result);
+                startActivity(intent);
+
+
+            }
+        }
     }
 
     @Override
@@ -123,11 +126,8 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
         if (opcion == opcionMenu.BORRAR){
 
-
             miAdapter.borrar(ultimoSeleccionado);
-            //miVM.getListadoQuiz().getValue();
-
-
+            
         }else {
 
             Toast.makeText(this, opcion.toString(), Toast.LENGTH_SHORT).show();

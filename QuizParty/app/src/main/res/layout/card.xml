@@ -63,7 +63,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/facil"
-                app:layout_constraintBottom_toTopOf="@+id/numeroFaciles"
+                app:layout_constraintBottom_toTopOf="@+id/botonFacil"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -77,12 +77,12 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/dificil"
-                app:layout_constraintBottom_toTopOf="@+id/numeroDificiles"
+                app:layout_constraintBottom_toTopOf="@+id/botonDificiles"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline10" />
 
             <TextView
-                android:id="@+id/numeroFaciles"
+                android:id="@+id/botonFacil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -97,7 +97,7 @@
                 tools:text="60/60" />
 
             <TextView
-                android:id="@+id/numeroDificiles"
+                android:id="@+id/botonDificiles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

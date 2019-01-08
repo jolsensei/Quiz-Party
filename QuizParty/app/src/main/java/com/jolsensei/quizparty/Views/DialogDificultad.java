@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -20,7 +21,9 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.R;
 
 public class DialogDificultad extends AppCompatActivity {
@@ -44,34 +47,37 @@ public class DialogDificultad extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
 
-//        Context context = this;
-//
-//
-//
-//        layout.animate().translationY(0);
-//        layout.setVisibility(View.VISIBLE);
-//        Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.dissapear);
-//        layout.startAnimation(slideUp);
+    public void seleccionarDificultad(View view) {
 
-        super.onBackPressed();
-    }
+        Intent returnIntent = new Intent();
 
-    @Override
-    protected void onPause() {
 
-        Context context = this;
+        switch (view.getId()){
 
 
 
-        layout.animate().translationY(0);
-        layout.setVisibility(View.VISIBLE);
-        Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_down);
-        layout.startAnimation(slideUp);
+            case R.id.botonFacil:
 
 
-        super.onPause();
+                returnIntent.putExtra("result", difficulties.EASY.toString());
+                setResult(Activity.RESULT_OK,returnIntent);
+
+                break;
+
+
+            case R.id.botonDificiles:
+
+
+                returnIntent.putExtra("result",difficulties.HARD.toString());
+                setResult(Activity.RESULT_OK,returnIntent);
+
+                break;
+
+
+        }
+
+        finish();
+
     }
 }

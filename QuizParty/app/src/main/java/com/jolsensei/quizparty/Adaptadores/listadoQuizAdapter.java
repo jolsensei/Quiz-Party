@@ -42,8 +42,8 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
 
             cv = (CardView)itemView.findViewById(R.id.cardQuiz);
             name = (TextView)itemView.findViewById(R.id.tituloQuiz);
-            easyQuestions = (TextView)itemView.findViewById(R.id.numeroFaciles);
-            hardQuestions = (TextView)itemView.findViewById(R.id.numeroDificiles);
+            easyQuestions = (TextView)itemView.findViewById(R.id.botonFacil);
+            hardQuestions = (TextView)itemView.findViewById(R.id.botonDificiles);
 
         }
 
@@ -108,6 +108,13 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
         this.listadoQuiz.remove(posicion);
         notifyItemRemoved(posicion);
 
+    }
+
+
+    public Quiz obtenerQuizSegunPosicion(int posicion){
+
+
+        return listadoQuiz.get(posicion);
     }
 
 
