@@ -13,14 +13,13 @@ public class jugandoQuizVM extends ViewModel {
     private MutableLiveData<Quiz> _currentQuiz;
     private MutableLiveData<difficulties> _currentDifficulty;
 
-    public MutableLiveData<Quiz> get_quizEnJuego() {
-        return _currentQuiz;
-    }
-
+    public MutableLiveData<Quiz> get_quizEnJuego() { return _currentQuiz; }
 
     public MutableLiveData<difficulties> get_dificultadSeleccionada() {
         return _currentDifficulty;
     }
+
+
 
     public jugandoQuizVM(){
 

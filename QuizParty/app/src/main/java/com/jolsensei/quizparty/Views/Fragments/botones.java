@@ -1,14 +1,18 @@
 package com.jolsensei.quizparty.Views.Fragments;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.jolsensei.quizparty.R;
+import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +23,9 @@ import com.jolsensei.quizparty.R;
 public class botones extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    jugandoQuizVM miVM;
+    Button botonNaranja;
+
 
     public botones() {
         // Required empty public constructor
@@ -26,10 +33,30 @@ public class botones extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_botones, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_botones, container, false);
+
+
+        botonNaranja = view.findViewById(R.id.preguntaNaranja);
+
+
+        return view;
+
+
+    }
+
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+        miVM = ViewModelProviders.of(getActivity()).get(jugandoQuizVM.class);
+
+        botonNaranja.append(String.valueOf(miVM.get_quizEnJuego().getValue().getEasyQuestions().size()));
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

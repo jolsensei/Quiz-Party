@@ -109,7 +109,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
 
-                String result = data.getStringExtra("result");
+                difficulties result = (difficulties) data.getSerializableExtra("result");
 
 
                 intent.putExtra("quiz", miAdapter.obtenerQuizSegunPosicion(ultimoSeleccionado));

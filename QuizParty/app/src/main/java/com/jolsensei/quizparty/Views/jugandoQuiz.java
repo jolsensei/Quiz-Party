@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 
 import com.jolsensei.quizparty.Entidades.Quiz;
+import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
 import com.jolsensei.quizparty.Views.Fragments.botones;
@@ -26,16 +27,22 @@ public class jugandoQuiz extends AppCompatActivity implements botones.OnFragment
         setContentView(R.layout.activity_jugando_quiz);
 
 
+        miVM = ViewModelProviders.of(this).get(jugandoQuizVM.class);
+
         currentName = findViewById(R.id.currentQuizName);
         currentDifficulty = findViewById(R.id.currentDifficulty);
 
         Quiz quiz = getIntent().getExtras().getParcelable("quiz");
-        String difficulty = getIntent().getStringExtra("dificulty");
+        difficulties difficulty = (difficulties) getIntent().getExtras().getSerializable("dificulty");
 
-        currentName.setText(quiz.getName());
-        currentDifficulty.setText(difficulty);
+
+        miVM.cargarVM(quiz, difficulty);
+
+        currentName.setText(miVM.get_quizEnJuego().getValue().getName());
+        currentDifficulty.setText(miVM.get_dificultadSeleccionada().getValue().toString());
 
     }
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {

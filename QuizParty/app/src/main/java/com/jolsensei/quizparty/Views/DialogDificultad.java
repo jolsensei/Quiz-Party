@@ -52,15 +52,13 @@ public class DialogDificultad extends AppCompatActivity {
 
         Intent returnIntent = new Intent();
 
-
         switch (view.getId()){
 
 
 
             case R.id.botonFacil:
 
-
-                returnIntent.putExtra("result", difficulties.EASY.toString());
+                returnIntent.putExtra("result", difficulties.EASY);
                 setResult(Activity.RESULT_OK,returnIntent);
 
                 break;
@@ -68,13 +66,10 @@ public class DialogDificultad extends AppCompatActivity {
 
             case R.id.botonDificiles:
 
-
-                returnIntent.putExtra("result",difficulties.HARD.toString());
+                returnIntent.putExtra("result",difficulties.HARD);
                 setResult(Activity.RESULT_OK,returnIntent);
 
                 break;
-
-
         }
 
         finish();
