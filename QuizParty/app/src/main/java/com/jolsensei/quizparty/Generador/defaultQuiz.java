@@ -23,6 +23,7 @@ public class defaultQuiz {
         questionListEasy.add(new Question("Cual es el nombre del primer opening de One Piece","We are",colors.BROWN,difficulties.EASY));
         questionListEasy.add(new Question("¿Cual era el equipo al que pertenecian Naruto, Sakura y Sasuke?","7",colors.PINK,difficulties.EASY));
         questionListEasy.add(new Question("En Shingeki no Kyojin, ¿poseen aparato reproductor los titanes?","No",colors.YELLOW,difficulties.EASY));
+        questionListEasy.add(new Question("Esto es una prueba extra","Si",colors.ORANGE,difficulties.EASY));
 
         list.add(new Quiz("Anime y Manga","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionListEasy, questionListHard));
         list.add(new Quiz("Mango y Animu","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionListEasy, questionListHard));

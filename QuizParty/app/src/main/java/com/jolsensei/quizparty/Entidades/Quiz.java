@@ -101,6 +101,46 @@ public class Quiz implements Parcelable {
         this.hardQuestions = hardQuestions;
     }
 
+
+    public ArrayList<Question> questionFilter(difficulties d, colors c){
+
+        ArrayList<Question> filteredQuiz = new ArrayList<>();
+
+        ArrayList<Question> selectedDifficulty = null;
+
+        switch (d){
+
+
+            case EASY:
+
+                selectedDifficulty = this.easyQuestions;
+
+                break;
+
+            case HARD:
+
+                selectedDifficulty = this.hardQuestions;
+
+                break;
+
+        }
+
+        for (int i = 0; i < selectedDifficulty.size(); i++){
+
+            if (selectedDifficulty.get(i).getColor().equals(c)){
+
+                filteredQuiz.add(selectedDifficulty.get(i));
+
+            }
+        }
+
+
+        return filteredQuiz;
+    }
+
+
+
+
     @Override
     public int describeContents() {
         return 0;

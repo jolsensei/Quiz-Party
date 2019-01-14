@@ -24,7 +24,7 @@ public class botones extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     jugandoQuizVM miVM;
-    Button botonNaranja;
+    Button botonNaranja, botonVerde, botonMarron, botonAzul, botonRosa, botonAmarillo;
 
 
     public botones() {
@@ -39,6 +39,11 @@ public class botones extends Fragment {
 
 
         botonNaranja = view.findViewById(R.id.preguntaNaranja);
+        botonVerde = view.findViewById(R.id.preguntaVerde);
+        botonMarron = view.findViewById(R.id.preguntaMarron);
+        botonAzul = view.findViewById(R.id.preguntaAzul);
+        botonRosa = view.findViewById(R.id.preguntaRosa);
+        botonAmarillo = view.findViewById(R.id.preguntaAmarilla);
 
 
         return view;
@@ -55,7 +60,13 @@ public class botones extends Fragment {
 
         miVM = ViewModelProviders.of(getActivity()).get(jugandoQuizVM.class);
 
-        botonNaranja.append(String.valueOf(miVM.get_quizEnJuego().getValue().getEasyQuestions().size()));
+        botonNaranja.append(String.valueOf(miVM.get_orangeQuestions().getValue().size()));
+        botonVerde.append(String.valueOf(miVM.get_greenQuestions().getValue().size()));
+        botonMarron.append(String.valueOf(miVM.get_browQuestions().getValue().size()));
+        botonAzul.append(String.valueOf(miVM.get_blueQuestions().getValue().size()));
+        botonRosa.append(String.valueOf(miVM.get_pinkQuestions().getValue().size()));
+        botonAmarillo.append(String.valueOf(miVM.get_yellowQuestions().getValue().size()));
+
 
     }
 
