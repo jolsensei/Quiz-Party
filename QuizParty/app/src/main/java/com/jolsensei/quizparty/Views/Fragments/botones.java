@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
@@ -20,7 +21,7 @@ import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
  * {@link botones.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class botones extends Fragment {
+public class botones extends Fragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
     jugandoQuizVM miVM;
@@ -45,6 +46,13 @@ public class botones extends Fragment {
         botonRosa = view.findViewById(R.id.preguntaRosa);
         botonAmarillo = view.findViewById(R.id.preguntaAmarilla);
 
+        botonNaranja.setOnClickListener(this);
+        botonVerde.setOnClickListener(this);
+        botonMarron.setOnClickListener(this);
+        botonAzul.setOnClickListener(this);
+        botonRosa.setOnClickListener(this);
+        botonAmarillo.setOnClickListener(this);
+
 
         return view;
 
@@ -66,6 +74,33 @@ public class botones extends Fragment {
         botonAzul.append(String.valueOf(miVM.get_blueQuestions().getValue().size()));
         botonRosa.append(String.valueOf(miVM.get_pinkQuestions().getValue().size()));
         botonAmarillo.append(String.valueOf(miVM.get_yellowQuestions().getValue().size()));
+
+
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
+
+        switch (view.getId()){
+
+            case R.id.preguntaNaranja:
+
+                Toast.makeText(getContext(), "naranja", Toast.LENGTH_SHORT).show();
+
+
+                break;
+
+
+            case R.id.preguntaVerde:
+
+                Toast.makeText(getContext(), "verde", Toast.LENGTH_SHORT).show();
+
+                break;
+
+
+        }
 
 
     }
@@ -93,6 +128,8 @@ public class botones extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

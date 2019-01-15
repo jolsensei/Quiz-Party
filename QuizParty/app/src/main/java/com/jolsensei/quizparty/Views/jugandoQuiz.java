@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -48,4 +49,6 @@ public class jugandoQuiz extends AppCompatActivity implements botones.OnFragment
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
 }

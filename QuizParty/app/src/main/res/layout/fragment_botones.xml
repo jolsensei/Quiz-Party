@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Views.Fragments.botones">
 
-    <!-- TODO: Update blank fragment layout -->
-
 
 
     <android.support.constraint.Guideline
@@ -49,10 +47,11 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/tarjetanaranja"
-        android:foreground="@drawable/selectable_item"
+        android:foreground="@drawable/ripple"
         android:gravity="bottom"
         android:paddingLeft="4dp"
         android:text="@string/quedan"
+        android:onClick="irAPregunta"
         android:textAllCaps="false"
         android:textColor="@color/blancoFondo"
         android:textSize="18sp"
@@ -72,7 +71,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/tarjetaverde"
-        android:foreground="@drawable/selectable_item"
+        android:foreground="@drawable/ripple"
         android:gravity="bottom"
         android:paddingLeft="4dp"
         android:text="@string/quedan"
@@ -96,7 +95,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/tarjetamarron"
-        android:foreground="@drawable/selectable_item"
+        android:foreground="@drawable/ripple"
         android:gravity="bottom"
         android:paddingLeft="4dp"
         android:text="@string/quedan"
@@ -120,7 +119,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/tarjetaazul"
-        android:foreground="@drawable/selectable_item"
+        android:foreground="@drawable/ripple"
         android:gravity="bottom"
         android:paddingLeft="4dp"
         android:text="@string/quedan"
@@ -144,7 +143,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/tarjetarosa"
-        android:foreground="@drawable/selectable_item"
+        android:foreground="@drawable/ripple"
         android:gravity="bottom"
         android:paddingLeft="4dp"
         android:text="@string/quedan"
@@ -168,7 +167,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/tarjetaamarilla"
-        android:foreground="@drawable/selectable_item"
+        android:foreground="@drawable/ripple"
         android:gravity="bottom"
         android:paddingLeft="4dp"
         android:text="@string/quedan"
