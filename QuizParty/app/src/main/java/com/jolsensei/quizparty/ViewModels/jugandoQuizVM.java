@@ -22,6 +22,8 @@ public class jugandoQuizVM extends ViewModel {
     private MutableLiveData<ArrayList<Question>> _pinkQuestions;
     private MutableLiveData<ArrayList<Question>> _yellowQuestions;
 
+    private MutableLiveData<Question> _currentQuestion;
+
 
 
 
@@ -51,7 +53,6 @@ public class jugandoQuizVM extends ViewModel {
         _pinkQuestions = new MutableLiveData<>();
         _yellowQuestions = new MutableLiveData<>();
 
-
     }
 
 
@@ -68,10 +69,9 @@ public class jugandoQuizVM extends ViewModel {
         _pinkQuestions.setValue(quiz.questionFilter(difficulty, colors.PINK));
         _yellowQuestions.setValue(quiz.questionFilter(difficulty, colors.YELLOW));
 
-
-
-
     }
+
+
 
 
 }

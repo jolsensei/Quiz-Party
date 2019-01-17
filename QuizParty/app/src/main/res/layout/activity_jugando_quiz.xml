@@ -68,13 +68,15 @@
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.jolsensei.quizparty.Views.Fragments.botones"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+        app:layout_constraintTop_toTopOf="@+id/guideline14">
+
+    </FrameLayout>
+
 </android.support.constraint.ConstraintLayout>

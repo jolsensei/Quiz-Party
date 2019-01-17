@@ -51,7 +51,6 @@
         android:gravity="bottom"
         android:paddingLeft="4dp"
         android:text="@string/quedan"
-        android:onClick="irAPregunta"
         android:textAllCaps="false"
         android:textColor="@color/blancoFondo"
         android:textSize="18sp"
