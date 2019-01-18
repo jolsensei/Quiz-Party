@@ -2,6 +2,7 @@ package com.jolsensei.quizparty.ViewModels;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.widget.Toast;
 
 import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.Entidades.Quiz;
@@ -9,6 +10,7 @@ import com.jolsensei.quizparty.Entidades.colors;
 import com.jolsensei.quizparty.Entidades.difficulties;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class jugandoQuizVM extends ViewModel {
 
@@ -40,6 +42,8 @@ public class jugandoQuizVM extends ViewModel {
     public MutableLiveData<ArrayList<Question>> get_pinkQuestions() { return _pinkQuestions; }
     public MutableLiveData<ArrayList<Question>> get_yellowQuestions() { return _yellowQuestions; }
 
+    public MutableLiveData<Question> get_currentQuestion() { return _currentQuestion; }
+
     public jugandoQuizVM(){
 
         _currentQuiz = new MutableLiveData<>();
@@ -52,6 +56,7 @@ public class jugandoQuizVM extends ViewModel {
         _blueQuestions = new MutableLiveData<>();
         _pinkQuestions = new MutableLiveData<>();
         _yellowQuestions = new MutableLiveData<>();
+        _currentQuestion = new MutableLiveData<>();
 
     }
 
@@ -70,6 +75,33 @@ public class jugandoQuizVM extends ViewModel {
         _yellowQuestions.setValue(quiz.questionFilter(difficulty, colors.YELLOW));
 
     }
+
+    public Question randomQuestion(ArrayList<Question> questionList){
+
+        Question randomQuestion = null;
+        Random random = new Random();
+        int posicionAleatoria = 0;
+        int max = questionList.size();
+        int min = 0;
+
+        if(max != 0){
+
+            posicionAleatoria = random.nextInt(max - min)+ min;
+
+            randomQuestion = questionList.get(posicionAleatoria);
+            questionList.remove(posicionAleatoria);
+
+
+        }
+
+
+
+        return randomQuestion;
+
+
+    }
+
+
 
 
 

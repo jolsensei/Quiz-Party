@@ -3,6 +3,8 @@ package com.jolsensei.quizparty.Entidades;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class Question implements Parcelable {
 
     private String question;
@@ -49,7 +51,6 @@ public class Question implements Parcelable {
     public void setDifficultiy(difficulties difficultiy) {
         this.difficultiy = difficultiy;
     }
-
 
 
 

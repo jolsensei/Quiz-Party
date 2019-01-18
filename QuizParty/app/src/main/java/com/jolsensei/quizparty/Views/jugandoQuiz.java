@@ -1,5 +1,8 @@
 package com.jolsensei.quizparty.Views;
 
+import android.arch.lifecycle.Observer;
+import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.arch.lifecycle.ViewModelProviders;
 
@@ -10,15 +13,20 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
+import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
 import com.jolsensei.quizparty.Views.Fragments.botones;
+import com.jolsensei.quizparty.Views.Fragments.preguntaYrespuesta;
+
 import android.support.v4.app.Fragment;
 
+import java.util.ArrayList;
 
-public class jugandoQuiz extends AppCompatActivity  {
+
+public class jugandoQuiz extends AppCompatActivity implements preguntaYrespuesta.OnFragmentInteractionListener {
 
     TextView currentName, currentDifficulty;
     FrameLayout container;
@@ -54,9 +62,40 @@ public class jugandoQuiz extends AppCompatActivity  {
         transaction.add(R.id.container, addBotones);
         transaction.commit();
 
+        final Observer<Question> questionObserver = new Observer<Question>() {
+            @Override
+            public void onChanged(@Nullable final Question newQuestion) {
+
+                if(newQuestion != null){
+
+                    preguntaYrespuesta addPyR = new preguntaYrespuesta();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, addPyR);
+                    transaction.commit();
+
+                }else {
+
+                    botones addbotones = new botones();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, addbotones);
+                    transaction.commit();
+
+
+                }
+
+
+
+
+            }
+        };
+
+        miVM.get_currentQuestion().observe(this, questionObserver);
+
     }
 
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
-
+    }
 }

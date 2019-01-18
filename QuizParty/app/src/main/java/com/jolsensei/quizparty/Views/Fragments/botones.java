@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.jolsensei.quizparty.Entidades.Question;
+import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
 
@@ -73,25 +76,60 @@ public class botones extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
+        Question questionToShow = null;
+
 
         switch (view.getId()){
 
             case R.id.preguntaNaranja:
 
-                Toast.makeText(getContext(), "naranja", Toast.LENGTH_SHORT).show();
-
+                questionToShow = miVM.randomQuestion(miVM.get_orangeQuestions().getValue());
 
                 break;
 
 
             case R.id.preguntaVerde:
 
-                Toast.makeText(getContext(), "verde", Toast.LENGTH_SHORT).show();
+                questionToShow = miVM.randomQuestion(miVM.get_greenQuestions().getValue());
 
                 break;
 
 
+            case R.id.preguntaAzul:
+
+                questionToShow = miVM.randomQuestion(miVM.get_blueQuestions().getValue());
+
+                break;
+
+
+            case R.id.preguntaMarron:
+
+                questionToShow = miVM.randomQuestion(miVM.get_browQuestions().getValue());
+
+                break;
+
+            case R.id.preguntaRosa:
+
+                questionToShow = miVM.randomQuestion(miVM.get_pinkQuestions().getValue());
+
+                break;
+
+
+            case R.id.preguntaAmarilla:
+
+                questionToShow = miVM.randomQuestion(miVM.get_yellowQuestions().getValue());
+
+                break;
+
         }
+
+        if (questionToShow != null){
+
+            miVM.get_currentQuestion().postValue(questionToShow);
+
+        }
+
+
 
 
     }

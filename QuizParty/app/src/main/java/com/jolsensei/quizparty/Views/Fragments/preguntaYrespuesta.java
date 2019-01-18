@@ -1,14 +1,23 @@
 package com.jolsensei.quizparty.Views.Fragments;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.TextView;
 
 import com.jolsensei.quizparty.R;
+import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,9 +25,15 @@ import com.jolsensei.quizparty.R;
  * {@link preguntaYrespuesta.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class preguntaYrespuesta extends Fragment {
+public class preguntaYrespuesta extends Fragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
+
+    TextView definicionColor, preguntaYrespuesta, iconAceptar;
+
+    jugandoQuizVM miVM;
+
+    static boolean front;
 
     public preguntaYrespuesta() {
         // Required empty public constructor
@@ -26,17 +41,149 @@ public class preguntaYrespuesta extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pregunta_yrespuesta, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+
+
+        View view = inflater.inflate(R.layout.fragment_pregunta_yrespuesta, container, false);
+
+        definicionColor = view.findViewById(R.id.definicionColor);
+        preguntaYrespuesta = view.findViewById(R.id.flipPregunta);
+        iconAceptar = view.findViewById(R.id.iconoPreguntaResuelta);
+
+        preguntaYrespuesta.setOnClickListener(this);
+        iconAceptar.setOnClickListener(this);
+
+
+        front = true;
+
+        return view;
+
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+        miVM = ViewModelProviders.of(getActivity()).get(jugandoQuizVM.class);
+
+        setCurrentQuizDefinitionAndBackgroundColor();
+
+        preguntaYrespuesta.setText(miVM.get_currentQuestion().getValue().getQuestion());
+
+
+    }
+
+
+    private void setCurrentQuizDefinitionAndBackgroundColor(){
+
+        switch (miVM.get_currentQuestion().getValue().getColor()){
+
+            case ORANGE:
+
+                definicionColor.setText(miVM.get_quizEnJuego().getValue().getOrangeDef());
+                definicionColor.setBackgroundResource(R.drawable.tarjetanaranja);
+
+                break;
+
+
+            case BLUE:
+
+                definicionColor.setText(miVM.get_quizEnJuego().getValue().getBlueDef());
+                definicionColor.setBackgroundResource(R.drawable.tarjetaazul);
+
+                break;
+
+            case PINK:
+
+                definicionColor.setText(miVM.get_quizEnJuego().getValue().getPinkDef());
+                definicionColor.setBackgroundResource(R.drawable.tarjetarosa);
+
+                break;
+
+            case BROWN:
+
+                definicionColor.setText(miVM.get_quizEnJuego().getValue().getBrownDef());
+                definicionColor.setBackgroundResource(R.drawable.tarjetamarron);
+
+                break;
+
+            case GREEN:
+
+                definicionColor.setText(miVM.get_quizEnJuego().getValue().getGreenDef());
+                definicionColor.setBackgroundResource(R.drawable.tarjetaverde);
+
+                break;
+
+            case YELLOW:
+
+                definicionColor.setText(miVM.get_quizEnJuego().getValue().getYellowDef());
+                definicionColor.setBackgroundResource(R.drawable.tarjetaamarilla);
+
+                break;
         }
+
+
+    }
+
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+
+            case R.id.flipPregunta:
+
+
+            final ObjectAnimator oa1 = ObjectAnimator.ofFloat(preguntaYrespuesta, "scaleX", 1f, 0f);
+            final ObjectAnimator oa2 = ObjectAnimator.ofFloat(preguntaYrespuesta, "scaleX", 0f, 1f);
+            oa1.setInterpolator(new DecelerateInterpolator());
+            oa2.setInterpolator(new AccelerateDecelerateInterpolator());
+            oa1.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+
+
+                    if (front) {
+
+                        preguntaYrespuesta.setText(miVM.get_currentQuestion().getValue().getAnswer());
+                        oa2.start();
+                        front = false;
+                        iconAceptar.setVisibility(View.VISIBLE);
+
+                    } else {
+
+                        preguntaYrespuesta.setText(miVM.get_currentQuestion().getValue().getQuestion());
+                        oa2.start();
+
+                        front = true;
+                        iconAceptar.setVisibility(View.GONE);
+
+                    }
+
+
+                }
+            });
+            oa1.start();
+
+            break;
+
+
+            case R.id.iconoPreguntaResuelta:
+
+
+                miVM.get_currentQuestion().postValue(null);
+
+                break;
+
+        }
+
+
+
+
+
     }
 
     @Override
@@ -55,6 +202,8 @@ public class preguntaYrespuesta extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this
