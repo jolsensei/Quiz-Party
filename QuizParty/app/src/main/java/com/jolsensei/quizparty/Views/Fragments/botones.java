@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolsensei.quizparty.Entidades.Question;
@@ -21,6 +22,10 @@ public class botones extends Fragment implements View.OnClickListener {
     jugandoQuizVM miVM;
     Button botonNaranja, botonVerde, botonMarron, botonAzul, botonRosa, botonAmarillo;
 
+    TextView recargar, info, descripcionNaranja, descripcionVerde, descripcionMarron, descripcionAzul, descripcionRosa, descripcionAmarilla;
+
+    private boolean descripcionActiva;
+
 
     public botones() {
         // Required empty public constructor
@@ -32,6 +37,9 @@ public class botones extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.fragment_botones, container, false);
 
+        descripcionActiva = false;
+
+        info = view.findViewById(R.id.iconoInfo);
 
         botonNaranja = view.findViewById(R.id.preguntaNaranja);
         botonVerde = view.findViewById(R.id.preguntaVerde);
@@ -40,12 +48,20 @@ public class botones extends Fragment implements View.OnClickListener {
         botonRosa = view.findViewById(R.id.preguntaRosa);
         botonAmarillo = view.findViewById(R.id.preguntaAmarilla);
 
+        descripcionNaranja = view.findViewById(R.id.descripcionNaranja);
+        descripcionVerde = view.findViewById(R.id.descripcionVerde);
+        descripcionMarron = view.findViewById(R.id.descripcionMarron);
+        descripcionAzul = view.findViewById(R.id.descripcionAzul);
+        descripcionRosa = view.findViewById(R.id.descripcionRosa);
+        descripcionAmarilla = view.findViewById(R.id.descripcionAmarilla);
+
         botonNaranja.setOnClickListener(this);
         botonVerde.setOnClickListener(this);
         botonMarron.setOnClickListener(this);
         botonAzul.setOnClickListener(this);
         botonRosa.setOnClickListener(this);
         botonAmarillo.setOnClickListener(this);
+        info.setOnClickListener(this);
 
 
         return view;
@@ -68,6 +84,14 @@ public class botones extends Fragment implements View.OnClickListener {
         botonAzul.append(String.valueOf(miVM.get_blueQuestions().getValue().size()));
         botonRosa.append(String.valueOf(miVM.get_pinkQuestions().getValue().size()));
         botonAmarillo.append(String.valueOf(miVM.get_yellowQuestions().getValue().size()));
+
+
+        descripcionNaranja.setText(miVM.get_quizEnJuego().getValue().getOrangeDef());
+        descripcionVerde.setText(miVM.get_quizEnJuego().getValue().getGreenDef());
+        descripcionMarron.setText(miVM.get_quizEnJuego().getValue().getBrownDef());
+        descripcionAzul.setText(miVM.get_quizEnJuego().getValue().getBlueDef());
+        descripcionRosa.setText(miVM.get_quizEnJuego().getValue().getPinkDef());
+        descripcionAmarilla.setText(miVM.get_quizEnJuego().getValue().getYellowDef());
 
 
     }
@@ -121,6 +145,15 @@ public class botones extends Fragment implements View.OnClickListener {
 
                 break;
 
+            case R.id.iconoInfo:
+
+
+                showQuestionDescriptions();
+
+
+
+                break;
+
         }
 
         if (questionToShow != null){
@@ -129,8 +162,34 @@ public class botones extends Fragment implements View.OnClickListener {
 
         }
 
+    }
+
+    private void showQuestionDescriptions(){
+
+        if(descripcionActiva){
+
+            descripcionNaranja.setVisibility(View.GONE);
+            descripcionVerde.setVisibility(View.GONE);
+            descripcionMarron.setVisibility(View.GONE);
+            descripcionAzul.setVisibility(View.GONE);
+            descripcionRosa.setVisibility(View.GONE);
+            descripcionAmarilla.setVisibility(View.GONE);
+
+            descripcionActiva = false;
 
 
+        }else{
+
+            descripcionNaranja.setVisibility(View.VISIBLE);
+            descripcionVerde.setVisibility(View.VISIBLE);
+            descripcionMarron.setVisibility(View.VISIBLE);
+            descripcionAzul.setVisibility(View.VISIBLE);
+            descripcionRosa.setVisibility(View.VISIBLE);
+            descripcionAmarilla.setVisibility(View.VISIBLE);
+
+            descripcionActiva = true;
+
+        }
 
     }
 

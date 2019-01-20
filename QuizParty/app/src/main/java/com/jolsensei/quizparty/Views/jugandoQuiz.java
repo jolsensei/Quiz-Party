@@ -21,10 +21,6 @@ import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
 import com.jolsensei.quizparty.Views.Fragments.botones;
 import com.jolsensei.quizparty.Views.Fragments.preguntaYrespuesta;
 
-import android.support.v4.app.Fragment;
-
-import java.util.ArrayList;
-
 
 public class jugandoQuiz extends AppCompatActivity implements preguntaYrespuesta.OnFragmentInteractionListener {
 
@@ -54,7 +50,26 @@ public class jugandoQuiz extends AppCompatActivity implements preguntaYrespuesta
         miVM.cargarVM(quiz, difficulty);
 
         currentName.setText(miVM.get_quizEnJuego().getValue().getName());
-        currentDifficulty.setText(miVM.get_dificultadSeleccionada().getValue().toString());
+
+
+        switch (miVM.get_dificultadSeleccionada().getValue()){
+
+            case EASY:
+
+                currentDifficulty.setText(R.string.f_cil);
+                currentDifficulty.setTextColor(getResources().getColor(R.color.verdePregunta));
+
+                break;
+
+
+            case HARD:
+
+                currentDifficulty.setText(R.string.dif_cil);
+                currentDifficulty.setTextColor(getResources().getColor(R.color.rosaPregunta));
+
+                break;
+
+        }
 
         //Añadir el fragment de los botones
         botones addBotones = new botones();
@@ -66,25 +81,25 @@ public class jugandoQuiz extends AppCompatActivity implements preguntaYrespuesta
             @Override
             public void onChanged(@Nullable final Question newQuestion) {
 
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.appear, R.anim.disspear);
+
                 if(newQuestion != null){
 
                     preguntaYrespuesta addPyR = new preguntaYrespuesta();
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
                     transaction.replace(R.id.container, addPyR);
                     transaction.commit();
 
                 }else {
 
                     botones addbotones = new botones();
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
                     transaction.replace(R.id.container, addbotones);
                     transaction.commit();
 
 
                 }
-
-
-
 
             }
         };

@@ -18,13 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Views.paginaListadoQuizs"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".Views.DialogDificultad"
             android:theme="@style/MyTheme" />
-        <activity android:name=".Views.jugandoQuiz"></activity>
+
+        <activity
+            android:name=".Views.jugandoQuiz"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
