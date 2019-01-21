@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class preguntaYrespuesta extends Fragment implements View.OnClickListener
 
 
         View view = inflater.inflate(R.layout.fragment_pregunta_yrespuesta, container, false);
+
 
         definicionColor = view.findViewById(R.id.definicionColor);
         preguntaYrespuesta = view.findViewById(R.id.flipPregunta);

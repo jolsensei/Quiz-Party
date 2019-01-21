@@ -4,15 +4,14 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jolsensei.quizparty.Entidades.Question;
-import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
 
@@ -55,6 +54,7 @@ public class botones extends Fragment implements View.OnClickListener {
         descripcionRosa = view.findViewById(R.id.descripcionRosa);
         descripcionAmarilla = view.findViewById(R.id.descripcionAmarilla);
 
+
         botonNaranja.setOnClickListener(this);
         botonVerde.setOnClickListener(this);
         botonMarron.setOnClickListener(this);
@@ -78,21 +78,8 @@ public class botones extends Fragment implements View.OnClickListener {
 
         miVM = ViewModelProviders.of(getActivity()).get(jugandoQuizVM.class);
 
-        botonNaranja.append(String.valueOf(miVM.get_orangeQuestions().getValue().size()));
-        botonVerde.append(String.valueOf(miVM.get_greenQuestions().getValue().size()));
-        botonMarron.append(String.valueOf(miVM.get_browQuestions().getValue().size()));
-        botonAzul.append(String.valueOf(miVM.get_blueQuestions().getValue().size()));
-        botonRosa.append(String.valueOf(miVM.get_pinkQuestions().getValue().size()));
-        botonAmarillo.append(String.valueOf(miVM.get_yellowQuestions().getValue().size()));
 
-
-        descripcionNaranja.setText(miVM.get_quizEnJuego().getValue().getOrangeDef());
-        descripcionVerde.setText(miVM.get_quizEnJuego().getValue().getGreenDef());
-        descripcionMarron.setText(miVM.get_quizEnJuego().getValue().getBrownDef());
-        descripcionAzul.setText(miVM.get_quizEnJuego().getValue().getBlueDef());
-        descripcionRosa.setText(miVM.get_quizEnJuego().getValue().getPinkDef());
-        descripcionAmarilla.setText(miVM.get_quizEnJuego().getValue().getYellowDef());
-
+        appendNumberOfQuestions();
 
     }
 
@@ -190,6 +177,37 @@ public class botones extends Fragment implements View.OnClickListener {
             descripcionActiva = true;
 
         }
+
+    }
+
+    private void appendNumberOfQuestions(){
+
+
+        botonNaranja.append(" ");
+        botonNaranja.append(Html.fromHtml("<big><b>"+String.valueOf(miVM.get_orangeQuestions().getValue().size())+"</big></b>"));
+
+        botonVerde.append(" ");
+        botonVerde.append(Html.fromHtml("<big><b>"+String.valueOf(miVM.get_greenQuestions().getValue().size())+"</big></b>"));
+
+        botonMarron.append(" ");
+        botonMarron.append(Html.fromHtml("<big><b>"+String.valueOf(miVM.get_browQuestions().getValue().size())+"</big></b>"));
+
+        botonAzul.append(" ");
+        botonAzul.append(Html.fromHtml("<big><b>"+String.valueOf(miVM.get_blueQuestions().getValue().size())+"</big></b>"));
+
+        botonRosa.append(" ");
+        botonRosa.append(Html.fromHtml("<big><b>"+String.valueOf(miVM.get_pinkQuestions().getValue().size())+"</big></b>"));
+
+        botonAmarillo.append(" ");
+        botonAmarillo.append(Html.fromHtml("<big><b>"+String.valueOf(miVM.get_yellowQuestions().getValue().size())+"</big></b>"));
+
+
+        descripcionNaranja.setText(miVM.get_quizEnJuego().getValue().getOrangeDef());
+        descripcionVerde.setText(miVM.get_quizEnJuego().getValue().getGreenDef());
+        descripcionMarron.setText(miVM.get_quizEnJuego().getValue().getBrownDef());
+        descripcionAzul.setText(miVM.get_quizEnJuego().getValue().getBlueDef());
+        descripcionRosa.setText(miVM.get_quizEnJuego().getValue().getPinkDef());
+        descripcionAmarilla.setText(miVM.get_quizEnJuego().getValue().getYellowDef());
 
     }
 

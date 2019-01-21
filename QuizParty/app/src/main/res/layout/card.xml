@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="160dp"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardQuiz"
         android:layout_width="match_parent"
-        android:layout_height="146dp"
+        android:layout_height="match_parent"
         android:backgroundTint="@color/grisTarjeta"
         android:foreground="@drawable/ripple"
-        app:cardCornerRadius="8dip">
+        app:cardCornerRadius="8dp"
+        android:layout_marginBottom="24dp">
 
 
         <android.support.constraint.ConstraintLayout
@@ -28,11 +29,12 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
                 android:textColor="@color/blancoFondo"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guideline19"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Anime y Manga" />
@@ -41,17 +43,19 @@
             <TextView
                 android:id="@+id/preguntas"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="54dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/preguntas"
                 android:textColor="@color/blancoFondo"
+                app:layout_constraintBottom_toTopOf="@+id/guideline6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
             <TextView
                 android:id="@+id/iconoFaciles"
@@ -59,15 +63,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/f_cil"
-                android:textSize="18sp"
                 android:textColor="@color/blancoFondo"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/botonFacil"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline6"
                 tools:text="Faciles" />
 
             <TextView
@@ -76,15 +82,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/dif_cil"
-                android:textSize="18sp"
                 android:textColor="@color/blancoFondo"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/botonDificiles"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline10"/>
+                app:layout_constraintStart_toStartOf="@+id/guideline10"
+                app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
             <TextView
                 android:id="@+id/botonFacil"
@@ -99,6 +107,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="parent"
+                android:textSize="18sp"
                 tools:text="60/60" />
 
             <TextView
@@ -114,6 +123,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline10"
+                android:textSize="18sp"
                 tools:text="60/60" />
 
             <android.support.constraint.Guideline
@@ -122,6 +132,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.3" />
 
         </android.support.constraint.ConstraintLayout>
 

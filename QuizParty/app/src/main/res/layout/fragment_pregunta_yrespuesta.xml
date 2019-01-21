@@ -57,13 +57,18 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/tarjeta"
         android:gravity="center"
+        android:lineSpacingMultiplier="1.5"
+        android:padding="16dp"
+        android:breakStrategy="simple"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/blancoFondo"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
-        tools:text="Texto de prueba para ver como se ajusta" />
+        tools:text="Texto de prueba para ver como se ajusta con los textos que son bastante larguitos y se salen por los lados, cosa que me molesta" />
 
     <TextView
         android:id="@+id/iconoPreguntaResuelta"

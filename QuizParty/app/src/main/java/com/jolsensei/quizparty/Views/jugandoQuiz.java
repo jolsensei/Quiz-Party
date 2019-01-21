@@ -108,6 +108,17 @@ public class jugandoQuiz extends AppCompatActivity implements preguntaYrespuesta
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        if (miVM.get_currentQuestion().getValue() == null){  //Para ver en que fragment esta
+
+            super.onBackPressed();
+
+        }
+
+
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
