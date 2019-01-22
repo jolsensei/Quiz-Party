@@ -61,7 +61,6 @@
         android:padding="16dp"
         android:breakStrategy="simple"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/blancoFondo"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
