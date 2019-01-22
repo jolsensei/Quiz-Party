@@ -37,8 +37,6 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
 
     //UltraViewPager
-    implementation ('com.alibaba.android:ultraviewpager:1.0.7.7@aar') {
-        transitive = true
-    }
+    implementation 'com.github.devlight:infinitecycleviewpager:1.0.2'
 
 }

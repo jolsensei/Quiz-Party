@@ -7,18 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 
 
+import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
+import com.jolsensei.quizparty.Adaptadores.MyPagerAdapter;
 import com.jolsensei.quizparty.R;
-import com.tmall.ultraviewpager.UltraViewPager;
+
 
 import java.util.ArrayList;
 
 
 public class paginaPrincipal extends AppCompatActivity {
 
-    UltraViewPager ultraViewPager;
-    ViewPager viewPager;
+
 
     ArrayList<String> opcionesMenu = new ArrayList<>();
+    HorizontalInfiniteCycleViewPager infiniteCycleViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,23 @@ public class paginaPrincipal extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_pagina_principal);
+
+        infiniteCycleViewPager = findViewById(R.id.cycleView);
+
+        opcionesMenu.add("Jugar");
+        opcionesMenu.add("Tienda");
+        opcionesMenu.add("Contanto");
+
+        MyPagerAdapter adapter = new MyPagerAdapter(opcionesMenu);
+        infiniteCycleViewPager.setAdapter(adapter);
+
+
+        infiniteCycleViewPager.setMaxPageScale(0.8F);
+        infiniteCycleViewPager.setMinPageScale(0.5F);
+        infiniteCycleViewPager.setCenterPageScaleOffset(30.0F);
+        infiniteCycleViewPager.setMinPageScaleOffset(5.0F);
+
+
 
 
 
