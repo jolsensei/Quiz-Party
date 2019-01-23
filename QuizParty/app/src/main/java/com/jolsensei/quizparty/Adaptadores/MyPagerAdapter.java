@@ -8,15 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jolsensei.quizparty.Entidades.tarjetaMenu;
 import com.jolsensei.quizparty.R;
+import com.tiagosantos.enchantedviewpager.EnchantedViewPager;
+import com.tiagosantos.enchantedviewpager.EnchantedViewPagerAdapter;
 
 import java.util.ArrayList;
 
+import static com.jolsensei.quizparty.Views.paginaPrincipal.execOption;
 import static com.jolsensei.quizparty.Views.paginaPrincipal.setupData;
 
-public class MyPagerAdapter extends PagerAdapter {
+public class MyPagerAdapter extends EnchantedViewPagerAdapter {
 
 
     private ArrayList<tarjetaMenu> listaOpciones = new ArrayList<>();
@@ -26,11 +30,11 @@ public class MyPagerAdapter extends PagerAdapter {
 
 
 
-    public MyPagerAdapter(final Context context){
+    public MyPagerAdapter(final Context context, ArrayList<tarjetaMenu> listaOpciones){
 
-        listaOpciones.add(new tarjetaMenu("JUGAR", R.drawable.iconojugar, "¡Reune a tus amigos y disfruta!"));
-        listaOpciones.add(new tarjetaMenu("CONTACTO", R.drawable.reportbug, "Reporta errores y contribuye a mejorar la aplicacion"));
-        listaOpciones.add(new tarjetaMenu("WEB MARKET", R.drawable.market, "Descarga contenido creado por otros usuarios"));
+        super(listaOpciones);
+
+        this.listaOpciones = listaOpciones;
 
         mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
@@ -39,12 +43,12 @@ public class MyPagerAdapter extends PagerAdapter {
     }
 
 
-    @Override
-    public int getCount() {
-
-        return listaOpciones.size();
-
-    }
+//    @Override
+//    public int getCount() {
+//
+//        return listaOpciones.size();
+//
+//    }
 
     @Override
     public int getItemPosition(final Object object) {
@@ -58,23 +62,28 @@ public class MyPagerAdapter extends PagerAdapter {
 
         final View view;
 
+        final int itemPosition = position % listaOpciones.size();
+
         view = mLayoutInflater.inflate(R.layout.menuoption, container , false);
 
-        setupData(view, listaOpciones.get(position));
+
+        TextView titulo, icono, descripcion;
+
+
+        setupData(view, listaOpciones.get(itemPosition));
 
 
 
+        view.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
 
+                execOption(view, listaOpciones.get(itemPosition).getIconoOpcion());
+            }
+        });
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(container.getContext(), "You clicked: " + page + ". page.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
+        view.setTag(EnchantedViewPager.ENCHANTED_VIEWPAGER_POSITION + position); //Dice que es necesario
         container.addView(view);
         return view;
     }

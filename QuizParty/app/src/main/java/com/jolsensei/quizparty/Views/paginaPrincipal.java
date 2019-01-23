@@ -13,6 +13,7 @@ import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import com.jolsensei.quizparty.Adaptadores.MyPagerAdapter;
 import com.jolsensei.quizparty.Entidades.tarjetaMenu;
 import com.jolsensei.quizparty.R;
+import com.tiagosantos.enchantedviewpager.EnchantedViewPager;
 
 
 import java.util.ArrayList;
@@ -32,37 +33,34 @@ public class paginaPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_pagina_principal);
 
-        final HorizontalInfiniteCycleViewPager infiniteCycleViewPager = findViewById(R.id.cycleView);
-
-        infiniteCycleViewPager.setAdapter(new MyPagerAdapter(this));
-
-
-//        infiniteCycleViewPager.setMediumScaled(true);
-//        infiniteCycleViewPager.setMaxPageScale(0.8F);
-//        infiniteCycleViewPager.setMinPageScale(0.5F);
-//        infiniteCycleViewPager.setCenterPageScaleOffset(30.0F);
-//        infiniteCycleViewPager.setMinPageScaleOffset(5.0F);
-//        infiniteCycleViewPager.setScrollDuration(2000);
+        opcionesMenu.add(new tarjetaMenu("QUIZ", R.drawable.iconojugar, "¡Reune a tus amigos y juega!"));
+        opcionesMenu.add(new tarjetaMenu("CONTACTO", R.drawable.contacto, "Contribuye a mejorar la aplicacion"));
+        opcionesMenu.add(new tarjetaMenu("MARKET", R.drawable.market, "Descarga contenido creado por otros usuarios"));
 
 
 
+        final EnchantedViewPager ePager = findViewById(R.id.ePager);
+
+
+        MyPagerAdapter adapter = new MyPagerAdapter(this, opcionesMenu);
+        adapter.enableCarrousel();
+
+        ePager.setAdapter(adapter);
+        ePager.useScale();
+        ePager.useAlpha();
+        ePager.setCurrentItem(adapter.getMiddlePosition());
 
 
 
-    }
 
 
-    public void irAMenuPartidas(View view) {
-
-        Intent intent = new Intent(this, paginaListadoQuizs.class);
-
-        startActivity(intent);
 
     }
+
 
     public static void setupData(final View view, final tarjetaMenu opcion){
 
-        final TextView titulo, icono, descripcion;
+        TextView titulo, icono, descripcion;
 
         titulo = view.findViewById(R.id.tituloOpcion);
         titulo.setText(opcion.getNombreOpcion());
@@ -73,5 +71,31 @@ public class paginaPrincipal extends AppCompatActivity {
 
         descripcion = view.findViewById(R.id.descripcionOpcion);
         descripcion.setText(opcion.getDescripcionOpcion());
+    }
+
+
+    public static void execOption(View view, int opcion){
+
+        Intent  intent = null;
+
+
+        switch (opcion){
+
+            case R.drawable.iconojugar:
+
+                intent = new Intent(view.getContext(), paginaListadoQuizs.class);
+
+            break;
+
+
+        }
+
+        if (intent != null){
+
+            view.getContext().startActivity(intent);
+        }
+
+
+
     }
 }

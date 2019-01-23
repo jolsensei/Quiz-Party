@@ -39,4 +39,7 @@ dependencies {
     //UltraViewPager
     implementation 'com.github.devlight:infinitecycleviewpager:1.0.2'
 
+    //
+    implementation 'com.tiagosantos:enchantedviewpager:1.1.0'
+
 }
