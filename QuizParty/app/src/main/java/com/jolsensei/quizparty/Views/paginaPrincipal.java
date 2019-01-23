@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Interpolator;
+import android.widget.TextView;
 
 
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
@@ -22,7 +23,7 @@ public class paginaPrincipal extends AppCompatActivity {
 
 
     ArrayList<tarjetaMenu> opcionesMenu = new ArrayList<>();
-    HorizontalInfiniteCycleViewPager infiniteCycleViewPager;
+    //HorizontalInfiniteCycleViewPager infiniteCycleViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +32,17 @@ public class paginaPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_pagina_principal);
 
-        infiniteCycleViewPager = findViewById(R.id.cycleView);
+        final HorizontalInfiniteCycleViewPager infiniteCycleViewPager = findViewById(R.id.cycleView);
 
-        opcionesMenu.add(new tarjetaMenu("JUGAR", R.drawable.iconojugar, "¡Reune a tus amigos y disfruta!"));
-        opcionesMenu.add(new tarjetaMenu("CONTACTO", R.drawable.reportbug, "Reporta errores y contribuye a mejorar la aplicacion"));
-        opcionesMenu.add(new tarjetaMenu("WEB MARKET", R.drawable.market, "Descarga contenido creado por otros usuarios"));
+        infiniteCycleViewPager.setAdapter(new MyPagerAdapter(this));
 
 
-        MyPagerAdapter adapter = new MyPagerAdapter(opcionesMenu);
-        infiniteCycleViewPager.setAdapter(adapter);
-
-
-        infiniteCycleViewPager.setMediumScaled(true);
-        infiniteCycleViewPager.setMaxPageScale(0.8F);
-        infiniteCycleViewPager.setMinPageScale(0.5F);
-        infiniteCycleViewPager.setCenterPageScaleOffset(30.0F);
-        infiniteCycleViewPager.setMinPageScaleOffset(5.0F);
-        infiniteCycleViewPager.setScrollDuration(2000);
+//        infiniteCycleViewPager.setMediumScaled(true);
+//        infiniteCycleViewPager.setMaxPageScale(0.8F);
+//        infiniteCycleViewPager.setMinPageScale(0.5F);
+//        infiniteCycleViewPager.setCenterPageScaleOffset(30.0F);
+//        infiniteCycleViewPager.setMinPageScaleOffset(5.0F);
+//        infiniteCycleViewPager.setScrollDuration(2000);
 
 
 
@@ -63,5 +58,20 @@ public class paginaPrincipal extends AppCompatActivity {
 
         startActivity(intent);
 
+    }
+
+    public static void setupData(final View view, final tarjetaMenu opcion){
+
+        final TextView titulo, icono, descripcion;
+
+        titulo = view.findViewById(R.id.tituloOpcion);
+        titulo.setText(opcion.getNombreOpcion());
+
+        icono = view.findViewById(R.id.iconoOpcion);
+        icono.setBackgroundResource(opcion.getIconoOpcion());
+
+
+        descripcion = view.findViewById(R.id.descripcionOpcion);
+        descripcion.setText(opcion.getDescripcionOpcion());
     }
 }

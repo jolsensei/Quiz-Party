@@ -1,29 +1,40 @@
 package com.jolsensei.quizparty.Adaptadores;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
+
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jolsensei.quizparty.Entidades.tarjetaMenu;
 import com.jolsensei.quizparty.R;
 
 import java.util.ArrayList;
 
+import static com.jolsensei.quizparty.Views.paginaPrincipal.setupData;
+
 public class MyPagerAdapter extends PagerAdapter {
 
 
     private ArrayList<tarjetaMenu> listaOpciones = new ArrayList<>();
 
-    public MyPagerAdapter(ArrayList<tarjetaMenu> opciones){
+    private Context mContext;
+    private LayoutInflater mLayoutInflater;
 
-        listaOpciones = opciones;
+
+
+    public MyPagerAdapter(final Context context){
+
+        listaOpciones.add(new tarjetaMenu("JUGAR", R.drawable.iconojugar, "¡Reune a tus amigos y disfruta!"));
+        listaOpciones.add(new tarjetaMenu("CONTACTO", R.drawable.reportbug, "Reporta errores y contribuye a mejorar la aplicacion"));
+        listaOpciones.add(new tarjetaMenu("WEB MARKET", R.drawable.market, "Descarga contenido creado por otros usuarios"));
+
+        mContext = context;
+        mLayoutInflater = LayoutInflater.from(context);
+
 
     }
 
@@ -36,29 +47,22 @@ public class MyPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+    public int getItemPosition(final Object object) {
 
-        return view.equals(o);
+        return POSITION_NONE;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        TextView titulo, icono, descripcion;
+        final View view;
 
-        LayoutInflater inflater = LayoutInflater.from(container.getContext());
-        View view = inflater.inflate(R.layout.menuoption, container , false);
+        view = mLayoutInflater.inflate(R.layout.menuoption, container , false);
 
-        titulo = view.findViewById(R.id.tituloOpcion);
-        titulo.setText(listaOpciones.get(position).getNombreOpcion());
-
-        icono = view.findViewById(R.id.iconoOpcion);
-        icono.setBackgroundResource(listaOpciones.get(position).getIconoOpcion());
+        setupData(view, listaOpciones.get(position));
 
 
-        descripcion = view.findViewById(R.id.descripcionOpcion);
-        descripcion.setText(listaOpciones.get(position).getDescripcionOpcion());
 
 
 
@@ -75,8 +79,15 @@ public class MyPagerAdapter extends PagerAdapter {
         return view;
     }
 
+
     @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+
+        return view.equals(o);
+    }
+
+    @Override
+    public void destroyItem(@NonNull final ViewGroup container, int position, @NonNull final Object object) {
 
         container.removeView((View)object);
 
