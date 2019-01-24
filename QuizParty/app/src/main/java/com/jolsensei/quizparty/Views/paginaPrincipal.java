@@ -24,7 +24,7 @@ public class paginaPrincipal extends AppCompatActivity {
 
 
     ArrayList<tarjetaMenu> opcionesMenu = new ArrayList<>();
-    //HorizontalInfiniteCycleViewPager infiniteCycleViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class paginaPrincipal extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_pagina_principal);
+
 
         opcionesMenu.add(new tarjetaMenu("QUIZ", R.drawable.iconojugar, "¡Reune a tus amigos y juega!"));
         opcionesMenu.add(new tarjetaMenu("CONTACTO", R.drawable.contacto, "Contribuye a mejorar la aplicacion"));
@@ -49,6 +50,12 @@ public class paginaPrincipal extends AppCompatActivity {
         ePager.useScale();
         ePager.useAlpha();
         ePager.setCurrentItem(adapter.getMiddlePosition());
+        ePager.setPageMargin(-100);
+
+
+
+
+
 
 
 
