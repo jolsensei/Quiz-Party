@@ -52,6 +52,9 @@ public class paginaPrincipal extends AppCompatActivity {
         ePager.setCurrentItem(adapter.getMiddlePosition());
         ePager.setPageMargin(-100);
 
+        ViewPager prueba = new ViewPager(this);
+
+
 
 
 

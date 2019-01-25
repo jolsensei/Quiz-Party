@@ -67,9 +67,6 @@ public class MyPagerAdapter extends EnchantedViewPagerAdapter {
         view = mLayoutInflater.inflate(R.layout.menuoption, container , false);
 
 
-        TextView titulo, icono, descripcion;
-
-
         setupData(view, listaOpciones.get(itemPosition));
 
 
