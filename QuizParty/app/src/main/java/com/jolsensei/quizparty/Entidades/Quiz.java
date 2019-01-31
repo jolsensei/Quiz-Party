@@ -1,12 +1,17 @@
 package com.jolsensei.quizparty.Entidades;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
 
+@Entity
 public class Quiz implements Parcelable {
 
+    @PrimaryKey
     private String name;
     private String orangeDef;
     private String greenDef;
@@ -14,7 +19,11 @@ public class Quiz implements Parcelable {
     private String yellowDef;
     private String brownDef;
     private String pinkDef;
+
+    @Ignore
     private ArrayList<Question> easyQuestions;
+
+    @Ignore
     private ArrayList<Question> hardQuestions;
 
     public Quiz(String name, String orangeDef, String greenDef, String blueDef, String yellowDef, String brownDef, String pinkDef, ArrayList<Question> easyQuestions, ArrayList<Question> hardQuestions) {

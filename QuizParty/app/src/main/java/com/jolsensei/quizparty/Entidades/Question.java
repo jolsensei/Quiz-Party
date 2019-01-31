@@ -1,23 +1,41 @@
 package com.jolsensei.quizparty.Entidades;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
 
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
+
+@Entity(foreignKeys = @ForeignKey(entity = Quiz.class,
+        parentColumns = "name",
+        childColumns = "quiz_name",
+        onDelete = CASCADE))
 public class Question implements Parcelable {
 
+    @PrimaryKey
     private String question;
     private String answer;
+
+    @TypeConverters(colorConverter.class)
     private colors color;
-    private difficulties difficultiy;
+
+    @TypeConverters(difficulties.class)
+    private difficulties difficulty;
+
+    private String quiz_name;
 
 
     public Question(String question, String answer, colors color, difficulties difficultiy) {
         this.question = question;
         this.answer = answer;
         this.color = color;
-        this.difficultiy = difficultiy;
+        this.difficulty = difficultiy;
     }
 
     public String getQuestion() {
@@ -45,11 +63,11 @@ public class Question implements Parcelable {
     }
 
     public difficulties getDifficultiy() {
-        return difficultiy;
+        return difficulty;
     }
 
     public void setDifficultiy(difficulties difficultiy) {
-        this.difficultiy = difficultiy;
+        this.difficulty = difficultiy;
     }
 
 
@@ -65,7 +83,7 @@ public class Question implements Parcelable {
         dest.writeString(this.question);
         dest.writeString(this.answer);
         dest.writeInt(this.color == null ? -1 : this.color.ordinal());
-        dest.writeInt(this.difficultiy == null ? -1 : this.difficultiy.ordinal());
+        dest.writeInt(this.difficulty == null ? -1 : this.difficulty.ordinal());
     }
 
     protected Question(Parcel in) {
@@ -74,7 +92,7 @@ public class Question implements Parcelable {
         int tmpColor = in.readInt();
         this.color = tmpColor == -1 ? null : colors.values()[tmpColor];
         int tmpDifficultiy = in.readInt();
-        this.difficultiy = tmpDifficultiy == -1 ? null : difficulties.values()[tmpDifficultiy];
+        this.difficulty = tmpDifficultiy == -1 ? null : difficulties.values()[tmpDifficultiy];
     }
 
     public static final Parcelable.Creator<Question> CREATOR = new Parcelable.Creator<Question>() {
