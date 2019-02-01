@@ -17,11 +17,9 @@ public class listadoQuizVM extends ViewModel  {
 
     public listadoQuizVM(){
 
-        defaultQuiz gestora = new defaultQuiz();
 
         _listadoQuiz = new MutableLiveData<>();
 
-        _listadoQuiz.setValue(gestora.defaultQuizGenerator());
 
     }
 

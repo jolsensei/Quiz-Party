@@ -54,7 +54,7 @@ public class paginaPrincipal extends AppCompatActivity {
 
         ViewPager prueba = new ViewPager(this);
 
-
+        this.deleteDatabase("quiz_database.db");
 
 
 

@@ -17,11 +17,13 @@ import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapterOnClickHandler;
 
 import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.Entidades.opcionMenu;
+import com.jolsensei.quizparty.Generador.defaultQuiz;
 import com.jolsensei.quizparty.Menus.BottomSheetDialog;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.listadoQuizVM;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
 
 public class paginaListadoQuizs extends AppCompatActivity implements listadoQuizAdapterOnClickHandler,
                                                                         View.OnClickListener, BottomSheetDialog.BottomSheetListener {
@@ -42,8 +44,12 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagina_listado_quizs);
 
+        defaultQuiz gestora = new defaultQuiz();
+
 
         miVM = ViewModelProviders.of(this).get(listadoQuizVM.class);
+
+        miVM.getListadoQuiz().setValue(gestora.prueba(this));
 
         listadoQuiz = findViewById(R.id.rvListadoQuiz);
 

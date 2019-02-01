@@ -1,11 +1,15 @@
 package com.jolsensei.quizparty.Generador;
 
+import android.content.Context;
+
+import com.jolsensei.quizparty.DDBB.QuizDatabase;
 import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.Entidades.colors;
 import com.jolsensei.quizparty.Entidades.difficulties;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class defaultQuiz {
 
@@ -32,6 +36,26 @@ public class defaultQuiz {
         list.add(new Quiz("Illo que funciona","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionListEasy, questionListHard));
 
         return list;
+    }
+
+
+    public ArrayList<Quiz> prueba(Context c){
+
+
+        List<Quiz> list;
+        ArrayList<Question> questionListEasy = new ArrayList<>();
+        ArrayList<Question> questionListHard = new ArrayList<>();
+
+        questionListEasy.add(new Question("¿En que famoso manga/anime aparece la isla de Skypea?","One Piece",colors.GREEN,difficulties.EASY));
+        questionListHard.add(new Question("¿Cual es la duracion media de un capitulo de anime?","20 minutos",colors.ORANGE,difficulties.HARD));
+
+        Quiz q = new Quiz("Anime y Manga","Anime","Mundo","Manga","Miscelaneo","Musica","Personajes",questionListEasy, questionListHard);
+
+        QuizDatabase.getDatabase(c).quizDao().insertQuiz(q);
+
+        list = QuizDatabase.getDatabase(c).quizDao().getQuizs();
+
+        return  new ArrayList<>(list);
     }
 
 }

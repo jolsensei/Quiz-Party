@@ -6,6 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 
@@ -19,13 +20,14 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 public class Question implements Parcelable {
 
     @PrimaryKey
+    @NonNull
     private String question;
     private String answer;
 
     @TypeConverters(colorConverter.class)
     private colors color;
 
-    @TypeConverters(difficulties.class)
+    @TypeConverters(difficultyConverter.class)
     private difficulties difficulty;
 
     private String quiz_name;
@@ -37,6 +39,10 @@ public class Question implements Parcelable {
         this.color = color;
         this.difficulty = difficultiy;
     }
+    public Question() {
+
+    }
+
 
     public String getQuestion() {
         return question;
@@ -62,16 +68,21 @@ public class Question implements Parcelable {
         this.color = color;
     }
 
-    public difficulties getDifficultiy() {
+    public difficulties getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficultiy(difficulties difficultiy) {
-        this.difficulty = difficultiy;
+    public void setDifficulty(difficulties difficulty) {
+        this.difficulty = difficulty;
     }
 
+    public String getQuiz_name() {
+        return quiz_name;
+    }
 
-
+    public void setQuiz_name(String quiz_name) {
+        this.quiz_name = quiz_name;
+    }
 
     @Override
     public int describeContents() {

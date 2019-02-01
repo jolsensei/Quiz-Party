@@ -82,8 +82,8 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
         Quiz currentQuiz = listadoQuiz.get(position);
 
         holder.name.setText(currentQuiz.getName());
-        holder.easyQuestions.setText(String.valueOf(currentQuiz.getEasyQuestions().size()));
-        holder.hardQuestions.setText(String.valueOf(currentQuiz.getHardQuestions().size()));
+        //holder.easyQuestions.setText(String.valueOf(currentQuiz.getEasyQuestions().size()));
+        //holder.hardQuestions.setText(String.valueOf(currentQuiz.getHardQuestions().size()));
 
 
     }

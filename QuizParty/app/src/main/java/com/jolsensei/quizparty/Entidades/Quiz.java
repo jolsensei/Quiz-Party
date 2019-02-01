@@ -5,6 +5,7 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class Quiz implements Parcelable {
 
     @PrimaryKey
+    @NonNull
     private String name;
     private String orangeDef;
     private String greenDef;
@@ -36,6 +38,10 @@ public class Quiz implements Parcelable {
         this.pinkDef = pinkDef;
         this.easyQuestions = easyQuestions;
         this.hardQuestions = hardQuestions;
+    }
+
+    public Quiz() {
+
     }
 
     public String getName() {
