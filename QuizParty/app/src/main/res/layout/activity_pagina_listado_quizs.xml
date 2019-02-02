@@ -64,7 +64,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/button2"
+        android:id="@+id/addIcon"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
@@ -73,7 +73,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/opciones"
+        android:background="@drawable/add"
+        android:onClick="addQuiz"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline11"

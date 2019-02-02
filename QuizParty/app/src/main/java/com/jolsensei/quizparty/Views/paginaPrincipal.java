@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import com.jolsensei.quizparty.Adaptadores.MyPagerAdapter;
+import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.tarjetaMenu;
 import com.jolsensei.quizparty.R;
 import com.tiagosantos.enchantedviewpager.EnchantedViewPager;
@@ -52,17 +53,6 @@ public class paginaPrincipal extends AppCompatActivity {
         ePager.setCurrentItem(adapter.getMiddlePosition());
         ePager.setPageMargin(-100);
 
-        ViewPager prueba = new ViewPager(this);
-
-        this.deleteDatabase("quiz_database.db");
-
-
-
-
-
-
-
-
 
 
     }
@@ -96,6 +86,15 @@ public class paginaPrincipal extends AppCompatActivity {
                 intent = new Intent(view.getContext(), paginaListadoQuizs.class);
 
             break;
+
+            case R.drawable.market:
+
+                //Para ir metiendo datos
+                Repositories r = new Repositories();
+
+                r.insertNewData(view.getContext());
+
+                break;
 
 
         }

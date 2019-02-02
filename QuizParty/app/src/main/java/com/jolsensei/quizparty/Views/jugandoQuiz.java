@@ -43,11 +43,11 @@ public class jugandoQuiz extends AppCompatActivity implements preguntaYrespuesta
         currentName = findViewById(R.id.currentQuizName);
         currentDifficulty = findViewById(R.id.currentDifficulty);
 
-        Quiz quiz = getIntent().getExtras().getParcelable("quiz");
+        String quizName = getIntent().getStringExtra("quiz");
         difficulties difficulty = (difficulties) getIntent().getExtras().getSerializable("dificulty");
 
 
-        miVM.cargarVM(quiz, difficulty);
+        miVM.cargarVM(quizName, difficulty, this);
 
         currentName.setText(miVM.get_quizEnJuego().getValue().getName());
 

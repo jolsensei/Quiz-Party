@@ -15,15 +15,12 @@ import android.widget.Toast;
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapter;
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapterOnClickHandler;
 
+import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.Entidades.opcionMenu;
-import com.jolsensei.quizparty.Generador.defaultQuiz;
 import com.jolsensei.quizparty.Menus.BottomSheetDialog;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.listadoQuizVM;
-
-import java.util.ArrayList;
-import java.util.concurrent.Executors;
 
 public class paginaListadoQuizs extends AppCompatActivity implements listadoQuizAdapterOnClickHandler,
                                                                         View.OnClickListener, BottomSheetDialog.BottomSheetListener {
@@ -44,12 +41,11 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagina_listado_quizs);
 
-        defaultQuiz gestora = new defaultQuiz();
 
 
         miVM = ViewModelProviders.of(this).get(listadoQuizVM.class);
 
-        miVM.getListadoQuiz().setValue(gestora.prueba(this));
+        miVM.loadQuizs(this);
 
         listadoQuiz = findViewById(R.id.rvListadoQuiz);
 
@@ -66,6 +62,18 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
 
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+
+        miVM.loadQuizs(this);
+
+        miAdapter.setQuizData(miVM.getListadoQuiz().getValue());
+    }
+
+
 
     public void volverAtras(View view) {
 
@@ -118,7 +126,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
                 difficulties result = (difficulties) data.getSerializableExtra("result");
 
 
-                intent.putExtra("quiz", miAdapter.obtenerQuizSegunPosicion(ultimoSeleccionado));
+                intent.putExtra("quiz", miAdapter.obtenerNombreQuizSegunPosicion(ultimoSeleccionado));
                 intent.putExtra("dificulty", result);
                 startActivity(intent);
 
@@ -132,7 +140,9 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
         if (opcion == opcionMenu.BORRAR){
 
-            miAdapter.borrar(ultimoSeleccionado);
+            miAdapter.borrar(ultimoSeleccionado, this);
+
+
             
         }else {
 
@@ -142,6 +152,15 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
 
 
+
+    }
+
+    public void addQuiz(View view) {
+
+
+        Intent intent = new Intent(this, nuevoQuiz.class);
+
+        startActivity(intent);
 
     }
 }

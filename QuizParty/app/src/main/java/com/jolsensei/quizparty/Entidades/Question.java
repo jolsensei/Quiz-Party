@@ -33,11 +33,12 @@ public class Question implements Parcelable {
     private String quiz_name;
 
 
-    public Question(String question, String answer, colors color, difficulties difficultiy) {
+    public Question(String question, String answer, colors color, difficulties difficultiy, String quiz_name) {
         this.question = question;
         this.answer = answer;
         this.color = color;
         this.difficulty = difficultiy;
+        this.quiz_name = quiz_name;
     }
     public Question() {
 

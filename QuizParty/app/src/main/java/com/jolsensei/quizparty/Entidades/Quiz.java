@@ -22,13 +22,13 @@ public class Quiz implements Parcelable {
     private String brownDef;
     private String pinkDef;
 
-    @Ignore
-    private ArrayList<Question> easyQuestions;
+    //@Ignore
+    //private ArrayList<Question> easyQuestions;
 
-    @Ignore
-    private ArrayList<Question> hardQuestions;
+    //@Ignore
+    //private ArrayList<Question> hardQuestions;
 
-    public Quiz(String name, String orangeDef, String greenDef, String blueDef, String yellowDef, String brownDef, String pinkDef, ArrayList<Question> easyQuestions, ArrayList<Question> hardQuestions) {
+    public Quiz(String name, String orangeDef, String greenDef, String blueDef, String yellowDef, String brownDef, String pinkDef) {
         this.name = name;
         this.orangeDef = orangeDef;
         this.greenDef = greenDef;
@@ -36,8 +36,6 @@ public class Quiz implements Parcelable {
         this.yellowDef = yellowDef;
         this.brownDef = brownDef;
         this.pinkDef = pinkDef;
-        this.easyQuestions = easyQuestions;
-        this.hardQuestions = hardQuestions;
     }
 
     public Quiz() {
@@ -100,59 +98,6 @@ public class Quiz implements Parcelable {
         this.pinkDef = pinkDef;
     }
 
-    public ArrayList<Question> getEasyQuestions() {
-        return easyQuestions;
-    }
-
-    public void setEasyQuestions(ArrayList<Question> easyQuestions) {
-        this.easyQuestions = easyQuestions;
-    }
-
-    public ArrayList<Question> getHardQuestions() {
-        return hardQuestions;
-    }
-
-    public void setHardQuestions(ArrayList<Question> hardQuestions) {
-        this.hardQuestions = hardQuestions;
-    }
-
-
-    public ArrayList<Question> questionFilter(difficulties d, colors c){
-
-        ArrayList<Question> filteredQuiz = new ArrayList<>();
-
-        ArrayList<Question> selectedDifficulty = null;
-
-        switch (d){
-
-
-            case EASY:
-
-                selectedDifficulty = this.easyQuestions;
-
-                break;
-
-            case HARD:
-
-                selectedDifficulty = this.hardQuestions;
-
-                break;
-
-        }
-
-        for (int i = 0; i < selectedDifficulty.size(); i++){
-
-            if (selectedDifficulty.get(i).getColor().equals(c)){
-
-                filteredQuiz.add(selectedDifficulty.get(i));
-
-            }
-        }
-
-
-        return filteredQuiz;
-    }
-
 
 
 
@@ -170,8 +115,6 @@ public class Quiz implements Parcelable {
         dest.writeString(this.yellowDef);
         dest.writeString(this.brownDef);
         dest.writeString(this.pinkDef);
-        dest.writeList(this.easyQuestions);
-        dest.writeList(this.hardQuestions);
     }
 
     protected Quiz(Parcel in) {
@@ -182,10 +125,6 @@ public class Quiz implements Parcelable {
         this.yellowDef = in.readString();
         this.brownDef = in.readString();
         this.pinkDef = in.readString();
-        this.easyQuestions = new ArrayList<Question>();
-        in.readList(this.easyQuestions, Question.class.getClassLoader());
-        this.hardQuestions = new ArrayList<Question>();
-        in.readList(this.hardQuestions, Question.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<Quiz> CREATOR = new Parcelable.Creator<Quiz>() {

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.R;
 
@@ -103,18 +104,26 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
     }
 
 
-    public void borrar(int posicion){
+    public void borrar(int posicion, Context c){
+
+        Repositories repo = new Repositories();
+
+        repo.deleteQuiz(c, listadoQuiz.get(posicion));
 
         this.listadoQuiz.remove(posicion);
         notifyItemRemoved(posicion);
 
+
+
+
+
     }
 
 
-    public Quiz obtenerQuizSegunPosicion(int posicion){
+    public String obtenerNombreQuizSegunPosicion(int posicion){
 
 
-        return listadoQuiz.get(posicion);
+        return listadoQuiz.get(posicion).getName();
     }
 
 

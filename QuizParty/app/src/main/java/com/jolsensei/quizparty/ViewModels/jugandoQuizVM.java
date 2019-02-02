@@ -2,8 +2,10 @@ package com.jolsensei.quizparty.ViewModels;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
 import android.widget.Toast;
 
+import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.Entidades.colors;
@@ -16,6 +18,10 @@ public class jugandoQuizVM extends ViewModel {
 
     private MutableLiveData<Quiz> _currentQuiz;
     private MutableLiveData<difficulties> _currentDifficulty;
+
+
+    private MutableLiveData<ArrayList<Question>> _allQuestions;
+
 
     private MutableLiveData<ArrayList<Question>> _orangeQuestions;
     private MutableLiveData<ArrayList<Question>> _greenQuestions;
@@ -48,6 +54,8 @@ public class jugandoQuizVM extends ViewModel {
 
         _currentQuiz = new MutableLiveData<>();
 
+        _allQuestions = new MutableLiveData<>();
+
         _currentDifficulty = new MutableLiveData<>();
 
         _orangeQuestions = new MutableLiveData<>();
@@ -61,18 +69,24 @@ public class jugandoQuizVM extends ViewModel {
     }
 
 
-    public void cargarVM(Quiz quiz, difficulties difficulty){
+    public void cargarVM(String quizName, difficulties difficulty, Context context){
+
+        Repositories repo = new Repositories();
+
+        Quiz quiz = repo.getQuizByName(context, quizName);
 
         _currentQuiz.setValue(quiz);
 
+        _allQuestions.setValue(repo.getQuestionsByQuizNameAndDifficulty(context, quizName, difficulty));
+
         _currentDifficulty.setValue(difficulty);
 
-        _orangeQuestions.setValue(quiz.questionFilter(difficulty, colors.ORANGE));
-        _greenQuestions.setValue(quiz.questionFilter(difficulty, colors.GREEN));
-        _browQuestions.setValue(quiz.questionFilter(difficulty, colors.BROWN));
-        _blueQuestions.setValue(quiz.questionFilter(difficulty, colors.BLUE));
-        _pinkQuestions.setValue(quiz.questionFilter(difficulty, colors.PINK));
-        _yellowQuestions.setValue(quiz.questionFilter(difficulty, colors.YELLOW));
+        _orangeQuestions.setValue(questionFilter(colors.ORANGE));
+        _greenQuestions.setValue(questionFilter(colors.GREEN));
+        _browQuestions.setValue(questionFilter(colors.BROWN));
+        _blueQuestions.setValue(questionFilter(colors.BLUE));
+        _pinkQuestions.setValue(questionFilter(colors.PINK));
+        _yellowQuestions.setValue(questionFilter(colors.YELLOW));
 
     }
 
@@ -99,6 +113,24 @@ public class jugandoQuizVM extends ViewModel {
         return randomQuestion;
 
 
+    }
+
+    private ArrayList<Question> questionFilter(colors c){
+
+        ArrayList<Question> filteredQuiz = new ArrayList<>();
+
+
+        for (int i = 0; i < _allQuestions.getValue().size(); i++){
+
+            if (_allQuestions.getValue().get(i).getColor().equals(c)){
+
+                filteredQuiz.add(_allQuestions.getValue().get(i));
+
+            }
+        }
+
+
+        return filteredQuiz;
     }
 
 
