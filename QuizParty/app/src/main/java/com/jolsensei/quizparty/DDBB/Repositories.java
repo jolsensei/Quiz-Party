@@ -2,6 +2,7 @@ package com.jolsensei.quizparty.DDBB;
 
 
 import android.content.Context;
+import android.database.sqlite.SQLiteConstraintException;
 import android.widget.Toast;
 
 import com.jolsensei.quizparty.Entidades.Question;
@@ -46,7 +47,17 @@ public class Repositories {
 
     public void  insertQuiz(Context c, Quiz q){
 
-        QuizDatabase.getDatabase(c).quizDao().insertQuiz(q);
+        try {
+
+            QuizDatabase.getDatabase(c).quizDao().insertQuiz(q);
+
+        }catch (SQLiteConstraintException e){
+
+            Toast.makeText(c, "No puedes insertar un Quiz con el mismo nombre", Toast.LENGTH_SHORT).show();
+
+        }
+
+
 
     }
 
@@ -61,7 +72,7 @@ public class Repositories {
     public ArrayList<Question> getQuestionsByQuizNameAndDifficulty(Context c, String quizName, difficulties d){
 
 
-        List<Question> list = QuizDatabase.getDatabase(c).quizDao().getQuestion(quizName, d);
+        List<Question> list = QuizDatabase.getDatabase(c).quizDao().getQuestions(quizName, d);
 
 
         return  new ArrayList<>(list);

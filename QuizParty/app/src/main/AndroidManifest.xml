@@ -27,7 +27,7 @@
         <activity
             android:name=".Views.jugandoQuiz"
             android:screenOrientation="portrait" />
-        <activity android:name=".Views.nuevoQuiz" android:windowSoftInputMode="adjustNothing"></activity>
+        <activity android:name=".Views.nuevoQuiz" android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>

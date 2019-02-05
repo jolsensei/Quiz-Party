@@ -24,7 +24,7 @@ public interface QuizDAO {
     @Query("SELECT * FROM Quiz WHERE name LIKE :quizName")
     public Quiz getQuizByName(String quizName);
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.ABORT) //Realmente la tiene por defecto
     public  void insertQuiz(Quiz q);
 
     @Delete
@@ -33,7 +33,7 @@ public interface QuizDAO {
 
     //QUESTION
     @Query("SELECT * FROM Question WHERE quiz_name LIKE :quizName AND difficulty LIKE :dificultySelected")
-    public List<Question> getQuestion(String quizName, difficulties dificultySelected);
+    public List<Question> getQuestions(String quizName, difficulties dificultySelected);
 
     @Insert
     public  void insertQuestion(Question q);
