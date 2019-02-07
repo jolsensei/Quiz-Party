@@ -36,6 +36,7 @@ public class paginaPrincipal extends AppCompatActivity {
 
 
         opcionesMenu.add(new tarjetaMenu("QUIZ", R.drawable.iconojugar, "¡Reune a tus amigos y juega!"));
+        opcionesMenu.add(new tarjetaMenu("DADOS", R.drawable.d5, "Por si no tienes unos a mano ;)"));
         opcionesMenu.add(new tarjetaMenu("CONTACTO", R.drawable.contacto, "Contribuye a mejorar la aplicacion"));
         opcionesMenu.add(new tarjetaMenu("MARKET", R.drawable.market, "Descarga contenido creado por otros usuarios"));
 
@@ -93,6 +94,13 @@ public class paginaPrincipal extends AppCompatActivity {
                 Repositories r = new Repositories();
 
                 r.insertNewData(view.getContext());
+
+                break;
+
+            case R.drawable.d5:
+
+
+                intent = new Intent(view.getContext(), diceTable.class);
 
                 break;
 
