@@ -13,16 +13,18 @@ public class dadoVM extends ViewModel  {
 
 
     private MutableLiveData<Integer> _diceFace;
+    private MutableLiveData<Integer> _lastDiceFace;
 
 
     public dadoVM(){
 
         _diceFace = new MutableLiveData<>();
+        _lastDiceFace = new MutableLiveData<>();
 
     }
 
 
-    public MutableLiveData<Integer> getListadoQuiz() {
+    public MutableLiveData<Integer> get_diceFace() {
 
         if (_diceFace == null){
 
@@ -34,8 +36,15 @@ public class dadoVM extends ViewModel  {
         return _diceFace;
     }
 
+    public MutableLiveData<Integer> get_lastDiceFace() {
 
+        if (_lastDiceFace == null){
 
+            _lastDiceFace = new MutableLiveData<>();
 
+        }
 
+        return _lastDiceFace;
+
+    }
 }

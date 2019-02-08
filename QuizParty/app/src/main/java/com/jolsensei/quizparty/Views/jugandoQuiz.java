@@ -1,6 +1,7 @@
 package com.jolsensei.quizparty.Views;
 
 import android.arch.lifecycle.Observer;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +10,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -124,4 +126,6 @@ public class jugandoQuiz extends AppCompatActivity implements preguntaYrespuesta
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
 }

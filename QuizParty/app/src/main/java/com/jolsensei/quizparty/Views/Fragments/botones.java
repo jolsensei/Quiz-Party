@@ -1,6 +1,7 @@
 package com.jolsensei.quizparty.Views.Fragments;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -39,6 +40,7 @@ public class botones extends Fragment implements View.OnClickListener {
         descripcionActiva = false;
 
         info = view.findViewById(R.id.iconoInfo);
+        recargar = view.findViewById(R.id.iconoRecargar);
 
         botonNaranja = view.findViewById(R.id.preguntaNaranja);
         botonVerde = view.findViewById(R.id.preguntaVerde);
@@ -62,6 +64,7 @@ public class botones extends Fragment implements View.OnClickListener {
         botonRosa.setOnClickListener(this);
         botonAmarillo.setOnClickListener(this);
         info.setOnClickListener(this);
+        recargar.setOnClickListener(this);
 
 
         return view;
@@ -137,9 +140,15 @@ public class botones extends Fragment implements View.OnClickListener {
 
                 showQuestionDescriptions();
 
-
-
                 break;
+
+            case R.id.iconoRecargar:
+
+                //Intent intent = new Intent(view.getContext(), diceTableDialog.class);
+
+                //startActivity(intent);
+
+            break;
 
         }
 
