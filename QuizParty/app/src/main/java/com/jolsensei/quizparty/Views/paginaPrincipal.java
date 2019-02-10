@@ -1,15 +1,10 @@
 package com.jolsensei.quizparty.Views;
 
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Interpolator;
 import android.widget.TextView;
-
-
-import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import com.jolsensei.quizparty.Adaptadores.MyPagerAdapter;
 import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.tarjetaMenu;
@@ -36,7 +31,7 @@ public class paginaPrincipal extends AppCompatActivity {
 
 
         opcionesMenu.add(new tarjetaMenu("QUIZ", R.drawable.iconojugar, "¡Reune a tus amigos y juega!"));
-        opcionesMenu.add(new tarjetaMenu("DADOS", R.drawable.d5, "Por si no tienes unos a mano ;)"));
+        opcionesMenu.add(new tarjetaMenu("DADO", R.drawable.dice, "Por si no tienes uno a mano ;)"));
         opcionesMenu.add(new tarjetaMenu("CONTACTO", R.drawable.contacto, "Contribuye a mejorar la aplicacion"));
         opcionesMenu.add(new tarjetaMenu("MARKET", R.drawable.market, "Descarga contenido creado por otros usuarios"));
 
@@ -97,7 +92,7 @@ public class paginaPrincipal extends AppCompatActivity {
 
                 break;
 
-            case R.drawable.d5:
+            case R.drawable.dice:
 
 
                 intent = new Intent(view.getContext(), diceTable.class);

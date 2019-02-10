@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
+import com.jolsensei.quizparty.Views.diceTable;
 
 
 public class botones extends Fragment implements View.OnClickListener {
@@ -22,7 +23,7 @@ public class botones extends Fragment implements View.OnClickListener {
     jugandoQuizVM miVM;
     Button botonNaranja, botonVerde, botonMarron, botonAzul, botonRosa, botonAmarillo;
 
-    TextView recargar, info, descripcionNaranja, descripcionVerde, descripcionMarron, descripcionAzul, descripcionRosa, descripcionAmarilla;
+    TextView dado, info, descripcionNaranja, descripcionVerde, descripcionMarron, descripcionAzul, descripcionRosa, descripcionAmarilla;
 
     private boolean descripcionActiva;
 
@@ -40,7 +41,7 @@ public class botones extends Fragment implements View.OnClickListener {
         descripcionActiva = false;
 
         info = view.findViewById(R.id.iconoInfo);
-        recargar = view.findViewById(R.id.iconoRecargar);
+        dado = view.findViewById(R.id.iconoDado);
 
         botonNaranja = view.findViewById(R.id.preguntaNaranja);
         botonVerde = view.findViewById(R.id.preguntaVerde);
@@ -64,7 +65,7 @@ public class botones extends Fragment implements View.OnClickListener {
         botonRosa.setOnClickListener(this);
         botonAmarillo.setOnClickListener(this);
         info.setOnClickListener(this);
-        recargar.setOnClickListener(this);
+        dado.setOnClickListener(this);
 
 
         return view;
@@ -142,11 +143,11 @@ public class botones extends Fragment implements View.OnClickListener {
 
                 break;
 
-            case R.id.iconoRecargar:
+            case R.id.iconoDado:
 
-                //Intent intent = new Intent(view.getContext(), diceTableDialog.class);
+                Intent intent = new Intent(view.getContext(), diceTable.class);
 
-                //startActivity(intent);
+                startActivity(intent);
 
             break;
 

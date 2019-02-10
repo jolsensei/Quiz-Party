@@ -144,9 +144,14 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
 
             
-        }else {
+        }else { //Editar
 
-            Toast.makeText(this, opcion.toString(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, editQuiz.class);
+
+            intent.putExtra("quiz", miAdapter.obtenerNombreQuizSegunPosicion(ultimoSeleccionado));
+
+            startActivity(intent);
+
 
         }
 
