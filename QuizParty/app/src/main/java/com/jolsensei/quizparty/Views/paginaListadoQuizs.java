@@ -142,7 +142,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
             miAdapter.borrar(ultimoSeleccionado, this);
 
-
+            
             
         }else { //Editar
 

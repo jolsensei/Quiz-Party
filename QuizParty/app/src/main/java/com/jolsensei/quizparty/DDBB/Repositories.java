@@ -57,13 +57,17 @@ public class Repositories {
 
         }
 
-
-
     }
 
     public void  deleteQuiz(Context c, Quiz q){
 
         QuizDatabase.getDatabase(c).quizDao().deleteQuiz(q);
+
+    }
+
+    public void updateQuiz(Context c, Quiz q){
+
+        QuizDatabase.getDatabase(c).quizDao().updateQuiz(q);
 
     }
 

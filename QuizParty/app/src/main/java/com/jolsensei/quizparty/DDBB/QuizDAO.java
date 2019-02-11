@@ -6,6 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.TypeConverters;
+import android.arch.persistence.room.Update;
 
 import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.Entidades.Quiz;
@@ -29,6 +30,9 @@ public interface QuizDAO {
 
     @Delete
     public  void deleteQuiz(Quiz q);
+
+    @Update
+    public void updateQuiz(Quiz q);
 
 
     //QUESTION
