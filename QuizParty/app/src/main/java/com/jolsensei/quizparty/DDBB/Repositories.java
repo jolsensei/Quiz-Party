@@ -17,9 +17,9 @@ public class Repositories {
 
     public void insertNewData(Context c){
 
-        //Question q = new Question("¿Cuál es el nombre de la cantante de multiples temas de la saga Fate?","Aimer",colors.BROWN,difficulties.HARD,"Anime y Manga");
+        Question q = new Question("Pepito perez","Patata",colors.GREEN,difficulties.HARD,"Prueba");
 
-        //QuizDatabase.getDatabase(c).quizDao().insertQuestion(q);
+        QuizDatabase.getDatabase(c).quizDao().insertQuestion(q);
 
         Toast.makeText(c, "Datos insertados con exito", Toast.LENGTH_SHORT).show();
 

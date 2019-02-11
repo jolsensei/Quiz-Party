@@ -34,7 +34,10 @@
         <activity
             android:name=".Views.diceTable"
             android:theme="@style/MyTheme" />
-        <activity android:name=".Views.editQuiz"></activity>
+
+        <activity
+            android:name=".Views.editQuiz"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>
