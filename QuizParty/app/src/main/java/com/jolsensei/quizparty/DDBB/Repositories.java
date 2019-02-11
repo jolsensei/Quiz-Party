@@ -82,5 +82,14 @@ public class Repositories {
         return  new ArrayList<>(list);
     }
 
+    public ArrayList<Question> getQuestionsByQuizName(Context c, String quizName){
+
+
+        List<Question> list = QuizDatabase.getDatabase(c).quizDao().getAllQuestions(quizName);
+
+
+        return  new ArrayList<>(list);
+    }
+
 
 }

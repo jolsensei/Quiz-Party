@@ -16,6 +16,7 @@ import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;
 import com.jolsensei.quizparty.Views.Fragments.botones;
 import com.jolsensei.quizparty.Views.Fragments.inputEditarQuiz;
 import com.jolsensei.quizparty.Views.Fragments.inputNuevoQuiz;
+import com.jolsensei.quizparty.Views.Fragments.questionList;
 
 public class editQuiz extends AppCompatActivity {
 
@@ -50,7 +51,7 @@ public class editQuiz extends AppCompatActivity {
         editQuizAdapter adapter = new editQuizAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new inputEditarQuiz(), "Quiz");
-        adapter.addFragment(new inputNuevoQuiz(), "Questions");
+        adapter.addFragment(new questionList(), "Questions");
 
         editPager.setAdapter(adapter);
         editTab.setupWithViewPager(editPager);

@@ -39,6 +39,9 @@ public interface QuizDAO {
     @Query("SELECT * FROM Question WHERE quiz_name LIKE :quizName AND difficulty LIKE :dificultySelected")
     public List<Question> getQuestions(String quizName, difficulties dificultySelected);
 
+    @Query("SELECT * FROM Question WHERE quiz_name LIKE :quizName")
+    public List<Question> getAllQuestions(String quizName);
+
     @Insert
     public  void insertQuestion(Question q);
 }
