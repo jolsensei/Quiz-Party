@@ -16,10 +16,13 @@ public class editarQuizVM extends ViewModel {
 
     private MutableLiveData<ArrayList<Question>> _allQuestions;
 
+    private MutableLiveData<Boolean> _wantToSave;
+
     public editarQuizVM(){
 
         _editedQuiz = new MutableLiveData<>();
         _allQuestions = new MutableLiveData<>();
+        _wantToSave = new MutableLiveData<>();
 
     }
 
@@ -43,6 +46,17 @@ public class editarQuizVM extends ViewModel {
         }
 
         return _allQuestions;
+    }
+
+    public MutableLiveData<Boolean> get_wantToSave() {
+
+        if (_wantToSave == null){
+
+            _wantToSave = new MutableLiveData<>();
+
+        }
+
+        return _wantToSave;
     }
 
 

@@ -59,5 +59,9 @@ public class editQuiz extends AppCompatActivity {
     }
 
 
+    public void guardarCambiosQuiz(View view) {
 
+        miVM.get_wantToSave().setValue(true);
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.jolsensei.quizparty.Views.Fragments;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.net.Uri;
@@ -61,27 +62,44 @@ public class inputEditarQuiz extends Fragment {
         azul.setText(miVM.get_editedQuiz().getValue().getBlueDef());
         rosa.setText(miVM.get_editedQuiz().getValue().getPinkDef());
         amarillo.setText(miVM.get_editedQuiz().getValue().getYellowDef());
+
+        final Observer<Boolean> saveObserver = new Observer<Boolean>() {
+            @Override
+            public void onChanged(@Nullable final Boolean wantToSave) {
+
+                if(wantToSave){
+
+                    guardarCambiosQuiz();
+
+                }
+
+
+
+            }
+        };
+
+        miVM.get_wantToSave().observe(this, saveObserver);
     }
 
-    public boolean guardarQuiz() {
+    public boolean guardarCambiosQuiz() {
 
         Repositories repo = new Repositories();
 
         boolean insertado = false;
 
-        Quiz nuevoQuiz = new Quiz(nombre.getText().toString(), naranja.getText().toString(),
+        Quiz editQuiz = new Quiz(nombre.getText().toString(), naranja.getText().toString(),
                 verde.getText().toString(), azul.getText().toString(),
                 amarillo.getText().toString(), marron.getText().toString(), rosa.getText().toString());
 
 
-        if (nuevoQuiz.getBlueDef().equals("") || nuevoQuiz.getBrownDef().equals("") || nuevoQuiz.getGreenDef().equals("") || nuevoQuiz.getOrangeDef().equals("")
-                || nuevoQuiz.getPinkDef().equals("") || nuevoQuiz.getYellowDef().equals("") || nuevoQuiz.getName().equals("")){
+        if (editQuiz.getBlueDef().equals("") || editQuiz.getBrownDef().equals("") || editQuiz.getGreenDef().equals("") || editQuiz.getOrangeDef().equals("")
+                || editQuiz.getPinkDef().equals("") || editQuiz.getYellowDef().equals("") || editQuiz.getName().equals("")){
 
             Toast.makeText(getContext(), "No puede insertar campos vacios", Toast.LENGTH_SHORT).show();
 
         }else {
-            //Actualizar
-            //repo.insertQuiz(getContext(), nuevoQuiz);
+
+            repo.updateQuiz(getContext(), editQuiz);
 
             insertado = true;
 

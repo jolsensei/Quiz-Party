@@ -26,10 +26,10 @@ public interface QuizDAO {
     public Quiz getQuizByName(String quizName);
 
     @Insert(onConflict = OnConflictStrategy.ABORT) //Realmente la tiene por defecto
-    public  void insertQuiz(Quiz q);
+    public void insertQuiz(Quiz q);
 
     @Delete
-    public  void deleteQuiz(Quiz q);
+    public void deleteQuiz(Quiz q);
 
     @Update
     public void updateQuiz(Quiz q);
