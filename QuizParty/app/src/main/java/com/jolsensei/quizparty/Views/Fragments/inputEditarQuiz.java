@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolsensei.quizparty.DDBB.Repositories;
@@ -19,9 +20,10 @@ import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.editarQuizVM;
 
 
-public class inputEditarQuiz extends Fragment {
+public class inputEditarQuiz extends Fragment implements View.OnClickListener {
 
     EditText nombre, naranja, verde, marron, azul, rosa, amarillo;
+    TextView guardar;
     editarQuizVM miVM;
 
     public inputEditarQuiz() {
@@ -34,14 +36,14 @@ public class inputEditarQuiz extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_input_editar_quiz, container, false);
 
-        nombre = view.findViewById(R.id.inputNombreQuizEdit);
-
         naranja = view.findViewById(R.id.inputDefNaranjaEdit);
         verde = view.findViewById(R.id.inputDefVerdeEdit);
         marron = view.findViewById(R.id.inputDefMarronEdit);
         azul = view.findViewById(R.id.inputDefAzulEdit);
         rosa = view.findViewById(R.id.inputDefRosaEdit);
         amarillo = view.findViewById(R.id.inputDefAmarillaEdit);
+
+        guardar = view.findViewById(R.id.iconoGuardarEditar);
 
 
         return view;
@@ -54,8 +56,6 @@ public class inputEditarQuiz extends Fragment {
 
         miVM = ViewModelProviders.of(getActivity()).get(editarQuizVM.class);
 
-        nombre.setText(miVM.get_editedQuiz().getValue().getName());
-
         naranja.setText(miVM.get_editedQuiz().getValue().getOrangeDef());
         verde.setText(miVM.get_editedQuiz().getValue().getGreenDef());
         marron.setText(miVM.get_editedQuiz().getValue().getBrownDef());
@@ -63,37 +63,31 @@ public class inputEditarQuiz extends Fragment {
         rosa.setText(miVM.get_editedQuiz().getValue().getPinkDef());
         amarillo.setText(miVM.get_editedQuiz().getValue().getYellowDef());
 
-        final Observer<Boolean> saveObserver = new Observer<Boolean>() {
-            @Override
-            public void onChanged(@Nullable final Boolean wantToSave) {
+        guardar.setOnClickListener(this);
 
-                if(wantToSave){
-
-                    guardarCambiosQuiz();
-
-                }
-
-
-
-            }
-        };
-
-        miVM.get_wantToSave().observe(this, saveObserver);
     }
 
-    public boolean guardarCambiosQuiz() {
+
+    @Override
+    public void onClick(View view) {
+
+        guardarCambiosQuiz();
+
+    }
+
+    public void guardarCambiosQuiz() {
 
         Repositories repo = new Repositories();
 
-        boolean insertado = false;
 
-        Quiz editQuiz = new Quiz(nombre.getText().toString(), naranja.getText().toString(),
+
+        Quiz editQuiz = new Quiz(miVM.get_editedQuiz().getValue().getName(), naranja.getText().toString(),
                 verde.getText().toString(), azul.getText().toString(),
                 amarillo.getText().toString(), marron.getText().toString(), rosa.getText().toString());
 
 
         if (editQuiz.getBlueDef().equals("") || editQuiz.getBrownDef().equals("") || editQuiz.getGreenDef().equals("") || editQuiz.getOrangeDef().equals("")
-                || editQuiz.getPinkDef().equals("") || editQuiz.getYellowDef().equals("") || editQuiz.getName().equals("")){
+                || editQuiz.getPinkDef().equals("") || editQuiz.getYellowDef().equals("")){
 
             Toast.makeText(getContext(), "No puede insertar campos vacios", Toast.LENGTH_SHORT).show();
 
@@ -101,11 +95,13 @@ public class inputEditarQuiz extends Fragment {
 
             repo.updateQuiz(getContext(), editQuiz);
 
-            insertado = true;
 
+            Toast.makeText(getContext(), "Guardado con éxito", Toast.LENGTH_SHORT).show();
         }
 
-        return insertado;
+
 
     }
+
+
 }

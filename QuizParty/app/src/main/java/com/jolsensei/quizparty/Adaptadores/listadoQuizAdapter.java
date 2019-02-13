@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.Quiz;
+import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.R;
 
 import java.util.ArrayList;
@@ -19,10 +20,14 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
 
     private ArrayList<Quiz> listadoQuiz;
     private final listadoQuizAdapterOnClickHandler listadoQuizHandler;
+    private Repositories repo = new Repositories();
+    private Context context;
 
-    public listadoQuizAdapter(listadoQuizAdapterOnClickHandler clickHandler){
+    public listadoQuizAdapter(listadoQuizAdapterOnClickHandler clickHandler, Context c){
 
         listadoQuizHandler = clickHandler;
+
+        context = c;
 
     }
 
@@ -83,8 +88,8 @@ public class listadoQuizAdapter extends RecyclerView.Adapter<listadoQuizAdapter.
         Quiz currentQuiz = listadoQuiz.get(position);
 
         holder.name.setText(currentQuiz.getName());
-        //holder.easyQuestions.setText(String.valueOf(currentQuiz.getEasyQuestions().size()));
-        //holder.hardQuestions.setText(String.valueOf(currentQuiz.getHardQuestions().size()));
+        holder.easyQuestions.setText(String.valueOf(repo.countQuestionsByNameAndDifficulty(context, currentQuiz.getName(), difficulties.EASY)));
+        holder.hardQuestions.setText(String.valueOf(repo.countQuestionsByNameAndDifficulty(context, currentQuiz.getName(), difficulties.HARD)));
 
 
     }

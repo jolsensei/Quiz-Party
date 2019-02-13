@@ -1,6 +1,7 @@
 package com.jolsensei.quizparty.Views;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jolsensei.quizparty.Adaptadores.editQuizAdapter;
 import com.jolsensei.quizparty.R;
@@ -25,6 +27,7 @@ public class editQuiz extends AppCompatActivity {
     TextView logoQuizName;
     ViewPager editPager;
     TabLayout editTab;
+    editQuizAdapter adapter;
 
 
     @Override
@@ -48,7 +51,7 @@ public class editQuiz extends AppCompatActivity {
         logoQuizName.setText(miVM.get_editedQuiz().getValue().getName());
 
 
-        editQuizAdapter adapter = new editQuizAdapter(getSupportFragmentManager());
+        adapter = new editQuizAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new inputEditarQuiz(), "Quiz");
         adapter.addFragment(new questionList(), "Questions");
@@ -58,10 +61,12 @@ public class editQuiz extends AppCompatActivity {
 
     }
 
+    public void addNewQuestion(View view) {
 
-    public void guardarCambiosQuiz(View view) {
+        Intent intent = new Intent(this, nuevaPregunta.class);
+        intent.putExtra("nombreQuiz", miVM.get_editedQuiz().getValue().getName());
 
-        miVM.get_wantToSave().setValue(true);
+        startActivity(intent);
 
     }
 }

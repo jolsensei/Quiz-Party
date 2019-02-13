@@ -42,6 +42,18 @@ public interface QuizDAO {
     @Query("SELECT * FROM Question WHERE quiz_name LIKE :quizName")
     public List<Question> getAllQuestions(String quizName);
 
+    @Query("SELECT * FROM Question") //Test reasons
+    public List<Question> getQuestionsTest();
+
     @Insert
     public  void insertQuestion(Question q);
+
+    @Update
+    public  void updateQuestion(Question q);
+
+    @Delete
+    public  void deleteQuestion(Question q);
+
+    @Query("SELECT COUNT(*) FROM Question WHERE quiz_name LIKE :quizName AND difficulty LIKE :dificultySelected")
+    public int countQuestionsByNameAndDifficulty(String quizName, difficulties dificultySelected);
 }

@@ -91,5 +91,27 @@ public class Repositories {
         return  new ArrayList<>(list);
     }
 
+    public void insertNewQuestion(Context c, Question q){
+
+        QuizDatabase.getDatabase(c).quizDao().insertQuestion(q);
+    }
+
+
+    public ArrayList<Question> getAllQuizQuestions(Context c){
+
+
+        List<Question> list = QuizDatabase.getDatabase(c).quizDao().getQuestionsTest();
+
+
+        return  new ArrayList<>(list);
+    }
+
+    public int countQuestionsByNameAndDifficulty(Context c, String quizName, difficulties d){
+
+
+        return QuizDatabase.getDatabase(c).quizDao().countQuestionsByNameAndDifficulty(quizName, d);
+
+    }
+
 
 }

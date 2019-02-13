@@ -55,7 +55,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
         listadoQuiz.setLayoutManager(llm);
 
-        miAdapter = new listadoQuizAdapter(this);
+        miAdapter = new listadoQuizAdapter(this, this);
         miAdapter.setQuizData(miVM.getListadoQuiz().getValue());
 
         listadoQuiz.setAdapter(miAdapter);

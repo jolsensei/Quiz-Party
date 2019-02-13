@@ -19,8 +19,9 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         onDelete = CASCADE))
 public class Question implements Parcelable {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
+    private int id;
     private String question;
     private String answer;
 
@@ -44,6 +45,14 @@ public class Question implements Parcelable {
 
     }
 
+    @NonNull
+    public int getId() {
+        return id;
+    }
+
+    public void setId(@NonNull int id) {
+        this.id = id;
+    }
 
     public String getQuestion() {
         return question;

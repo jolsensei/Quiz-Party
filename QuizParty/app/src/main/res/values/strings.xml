@@ -21,6 +21,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nombre_del_quiz">Nombre del Quiz</string>
     <string name="definici_n_de_colores">Definición de colores</string>
+    <string name="escriba_su_pregunta">Escriba su pregunta</string>
+    <string name="escriba_su_respuesta">Escriba su respuesta</string>
 
 
 </resources>
