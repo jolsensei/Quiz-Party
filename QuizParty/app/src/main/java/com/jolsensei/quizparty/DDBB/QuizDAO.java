@@ -1,5 +1,6 @@
 package com.jolsensei.quizparty.DDBB;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -40,7 +41,7 @@ public interface QuizDAO {
     public List<Question> getQuestions(String quizName, difficulties dificultySelected);
 
     @Query("SELECT * FROM Question WHERE quiz_name LIKE :quizName")
-    public List<Question> getAllQuestions(String quizName);
+    public LiveData<List<Question>> getAllQuestions(String quizName);
 
     @Query("SELECT * FROM Question") //Test reasons
     public List<Question> getQuestionsTest();

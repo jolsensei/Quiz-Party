@@ -1,27 +1,37 @@
 package com.jolsensei.quizparty.ViewModels;
 
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.Entidades.Quiz;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class editarQuizVM extends ViewModel {
+public class editarQuizVM extends AndroidViewModel{
+
+    private Repositories repo = new Repositories();
 
     private MutableLiveData<Quiz> _editedQuiz;
 
-    private MutableLiveData<ArrayList<Question>> _allQuestions;
+    private LiveData<List<Question>> _allQuestions;
 
-    public editarQuizVM(){
+    public editarQuizVM(@NonNull Application application) {
+        super(application);
+
 
         _editedQuiz = new MutableLiveData<>();
-        _allQuestions = new MutableLiveData<>();
 
+        _allQuestions = repo.getQuestionsByQuizName(application.getApplicationContext(), "");
     }
+
 
     public MutableLiveData<Quiz> get_editedQuiz() {
 
@@ -34,13 +44,8 @@ public class editarQuizVM extends ViewModel {
         return _editedQuiz;
     }
 
-    public MutableLiveData<ArrayList<Question>> get_allQuestions() {
+    public LiveData<List<Question>> get_allQuestions() {
 
-        if (_allQuestions == null){
-
-            _allQuestions = new MutableLiveData<>();
-
-        }
 
         return _allQuestions;
     }
@@ -48,14 +53,12 @@ public class editarQuizVM extends ViewModel {
 
     public void cargarVM(String quizName, Context c){
 
-        Repositories repo = new Repositories();
 
         Quiz quiz = repo.getQuizByName(c, quizName);
 
         _editedQuiz.setValue(quiz);
 
-        _allQuestions.setValue(repo.getQuestionsByQuizName(c, quizName));
-
+        _allQuestions = repo.getQuestionsByQuizName(c, quizName);
 
     }
 

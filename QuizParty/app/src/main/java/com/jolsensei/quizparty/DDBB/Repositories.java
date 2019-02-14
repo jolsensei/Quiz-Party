@@ -1,6 +1,7 @@
 package com.jolsensei.quizparty.DDBB;
 
 
+import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
 import android.widget.Toast;
@@ -17,7 +18,7 @@ public class Repositories {
 
     public void insertNewData(Context c){
 
-        Question q = new Question("Pepito perez","Patata",colors.GREEN,difficulties.HARD,"Prueba");
+        Question q = new Question("¿Qué famosa cantante ha hecho la mayoria openings de la saga Fate?","Aimer",colors.GREEN,difficulties.HARD,"Prueba");
 
         QuizDatabase.getDatabase(c).quizDao().insertQuestion(q);
 
@@ -82,13 +83,10 @@ public class Repositories {
         return  new ArrayList<>(list);
     }
 
-    public ArrayList<Question> getQuestionsByQuizName(Context c, String quizName){
+    public LiveData<List<Question>> getQuestionsByQuizName(Context c, String quizName){
 
 
-        List<Question> list = QuizDatabase.getDatabase(c).quizDao().getAllQuestions(quizName);
-
-
-        return  new ArrayList<>(list);
+        return  QuizDatabase.getDatabase(c).quizDao().getAllQuestions(quizName);
     }
 
     public void insertNewQuestion(Context c, Question q){

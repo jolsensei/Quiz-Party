@@ -45,12 +45,6 @@ public class editQuiz extends AppCompatActivity {
         String quizName = getIntent().getStringExtra("quiz");
 
 
-        miVM.cargarVM(quizName, this);
-
-
-        logoQuizName.setText(miVM.get_editedQuiz().getValue().getName());
-
-
         adapter = new editQuizAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new inputEditarQuiz(), "Quiz");
@@ -58,6 +52,10 @@ public class editQuiz extends AppCompatActivity {
 
         editPager.setAdapter(adapter);
         editTab.setupWithViewPager(editPager);
+
+        miVM.cargarVM(quizName, this);
+
+        logoQuizName.setText(miVM.get_editedQuiz().getValue().getName());
 
     }
 

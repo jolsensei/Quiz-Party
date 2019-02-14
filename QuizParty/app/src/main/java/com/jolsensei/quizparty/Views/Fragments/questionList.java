@@ -1,5 +1,6 @@
 package com.jolsensei.quizparty.Views.Fragments;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.net.Uri;
@@ -13,11 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jolsensei.quizparty.Adaptadores.listadoQuestionAdapter;
+import com.jolsensei.quizparty.Adaptadores.listadoQuestionAdapterOnClickHandler;
+import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.editarQuizVM;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class questionList extends Fragment {
+
+public class questionList extends Fragment implements listadoQuestionAdapterOnClickHandler {
 
     private RecyclerView listadoQuestions;
     private editarQuizVM miVM;
@@ -49,10 +55,31 @@ public class questionList extends Fragment {
 
         listadoQuestions.setLayoutManager(llm);
 
-        miAdapter = new listadoQuestionAdapter();
-        miAdapter.setQuestionData(miVM.get_allQuestions().getValue());
+        miAdapter = new listadoQuestionAdapter(this, getContext());
 
-        listadoQuestions.setAdapter(miAdapter);
+
+        final Observer<List<Question>> questionListObserver = new Observer<List<Question>>() {
+            @Override
+            public void onChanged(@Nullable final List<Question> newList) {
+
+                //Momentaneo
+                ArrayList<Question> listaMomentanea = new ArrayList<>(newList);
+
+                miAdapter.update(listaMomentanea);
+
+                listadoQuestions.setAdapter(miAdapter);
+
+            }
+        };
+
+        miVM.get_allQuestions().observe(this, questionListObserver);
+
+    }
+
+    @Override
+    public void onClick(int adapterPosition) {
+
+
 
     }
 }

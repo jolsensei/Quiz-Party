@@ -19,16 +19,19 @@ import java.util.ArrayList;
 public class listadoQuestionAdapter extends RecyclerView.Adapter<listadoQuestionAdapter.QuestionViewHolder> {
 
     private ArrayList<Question> listadoQuestion;
+    private final listadoQuestionAdapterOnClickHandler listadoQuestionHandler;
+    private Context context;
 
+    public listadoQuestionAdapter(listadoQuestionAdapterOnClickHandler clickHandler, Context c){
 
-    public listadoQuestionAdapter(){
+        listadoQuestionHandler = clickHandler;
 
-
+        context = c;
 
     }
 
 
-     class QuestionViewHolder extends RecyclerView.ViewHolder {
+     class QuestionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cv;
         TextView question;
         View color;
@@ -37,11 +40,18 @@ public class listadoQuestionAdapter extends RecyclerView.Adapter<listadoQuestion
 
             super(itemView);
 
+             itemView.setOnClickListener(this);
+
             cv = (CardView)itemView.findViewById(R.id.cardQuestion);
             question = (TextView)itemView.findViewById(R.id.tituloPregunta);
             color = itemView.findViewById(R.id.indicadorColor);
 
         }
+
+         @Override
+         public void onClick(View view) {
+             listadoQuestionHandler.onClick(getAdapterPosition());
+         }
 
 
     }
@@ -116,6 +126,7 @@ public class listadoQuestionAdapter extends RecyclerView.Adapter<listadoQuestion
     @Override
     public int getItemCount() {
 
+
         return listadoQuestion.size();
     }
 
@@ -133,6 +144,14 @@ public class listadoQuestionAdapter extends RecyclerView.Adapter<listadoQuestion
         Repositories repo = new Repositories();
 
         notifyItemRemoved(posicion);
+
+    }
+
+
+    public void update(ArrayList<Question> listado){
+
+        this.listadoQuestion = listado;
+        notifyDataSetChanged();
 
     }
 
