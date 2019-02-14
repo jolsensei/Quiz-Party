@@ -94,14 +94,21 @@ public class Repositories {
         QuizDatabase.getDatabase(c).quizDao().insertQuestion(q);
     }
 
+    public void updateQuestion(Context c, Question q){
 
-    public ArrayList<Question> getAllQuizQuestions(Context c){
+        QuizDatabase.getDatabase(c).quizDao().updateQuestion(q);
+    }
+
+    public void deleteQuestion(Context c, Question q){
+
+        QuizDatabase.getDatabase(c).quizDao().deleteQuestion(q);
+    }
 
 
-        List<Question> list = QuizDatabase.getDatabase(c).quizDao().getQuestionsTest();
+    public Question getQuestionById(Context c, int id){
 
+        return  QuizDatabase.getDatabase(c).quizDao().getQuestionById(id);
 
-        return  new ArrayList<>(list);
     }
 
     public int countQuestionsByNameAndDifficulty(Context c, String quizName, difficulties d){

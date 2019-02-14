@@ -132,18 +132,20 @@ public class listadoQuestionAdapter extends RecyclerView.Adapter<listadoQuestion
 
 
 
-    public void setQuestionData(ArrayList<Question> listado){
-
-        this.listadoQuestion = listado;
-        notifyDataSetChanged();
-    }
-
 
     public void borrar(int posicion, Context c){
 
         Repositories repo = new Repositories();
 
+        Question aBorrar = listadoQuestion.get(posicion);
+
+        this.listadoQuestion.remove(posicion);
         notifyItemRemoved(posicion);
+
+
+        repo.deleteQuestion(c, aBorrar);
+
+
 
     }
 

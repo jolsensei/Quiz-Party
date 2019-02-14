@@ -43,8 +43,8 @@ public interface QuizDAO {
     @Query("SELECT * FROM Question WHERE quiz_name LIKE :quizName")
     public LiveData<List<Question>> getAllQuestions(String quizName);
 
-    @Query("SELECT * FROM Question") //Test reasons
-    public List<Question> getQuestionsTest();
+    @Query("SELECT * FROM Question WHERE id LIKE :id")
+    public Question getQuestionById(int id);
 
     @Insert
     public  void insertQuestion(Question q);

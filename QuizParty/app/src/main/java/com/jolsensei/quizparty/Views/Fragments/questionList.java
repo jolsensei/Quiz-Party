@@ -1,14 +1,17 @@
 package com.jolsensei.quizparty.Views.Fragments;
 
+import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,7 @@ import com.jolsensei.quizparty.Adaptadores.listadoQuestionAdapterOnClickHandler;
 import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.editarQuizVM;
+import com.jolsensei.quizparty.Views.nuevaPregunta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +33,9 @@ public class questionList extends Fragment implements listadoQuestionAdapterOnCl
     private editarQuizVM miVM;
     private listadoQuestionAdapter miAdapter;
 
+
     public questionList() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -74,12 +79,40 @@ public class questionList extends Fragment implements listadoQuestionAdapterOnCl
 
         miVM.get_allQuestions().observe(this, questionListObserver);
 
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+                //miVM.get_allQuestions().removeObserver(questionListObserver); //Para hacer la animacion dentro
+
+                miAdapter.borrar(viewHolder.getAdapterPosition(), getContext());
+
+            }
+
+        }).attachToRecyclerView(listadoQuestions);
+
     }
+
+
 
     @Override
     public void onClick(int adapterPosition) {
 
 
+        int idPregunta = miVM.get_allQuestions().getValue().get(adapterPosition).getId();
+        String nombreQuiz = miVM.get_allQuestions().getValue().get(adapterPosition).getQuiz_name();
+
+        Intent intent = new Intent(getContext(), nuevaPregunta.class);
+        intent.putExtra("idPregunta", idPregunta);
+        intent.putExtra("nombreQuiz", nombreQuiz);
+
+        startActivity(intent);
 
     }
 }
