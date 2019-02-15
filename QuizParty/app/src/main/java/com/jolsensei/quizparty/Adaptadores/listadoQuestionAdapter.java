@@ -79,6 +79,7 @@ public class listadoQuestionAdapter extends RecyclerView.Adapter<listadoQuestion
         Question currentQuestion = listadoQuestion.get(position);
 
         holder.question.setText(currentQuestion.getQuestion());
+        holder.question.setSelected(true);
 
 
         switch (currentQuestion.getColor()){
@@ -135,15 +136,15 @@ public class listadoQuestionAdapter extends RecyclerView.Adapter<listadoQuestion
 
     public void borrar(int posicion, Context c){
 
-        Repositories repo = new Repositories();
+
 
         Question aBorrar = listadoQuestion.get(posicion);
 
-        this.listadoQuestion.remove(posicion);
-        notifyItemRemoved(posicion);
+        //this.listadoQuestion.remove(posicion);
+        //notifyItemRemoved(posicion);
 
 
-        repo.deleteQuestion(c, aBorrar);
+
 
 
 

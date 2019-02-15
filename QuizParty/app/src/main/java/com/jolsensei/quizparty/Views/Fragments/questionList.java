@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.jolsensei.quizparty.Adaptadores.listadoQuestionAdapter;
 import com.jolsensei.quizparty.Adaptadores.listadoQuestionAdapterOnClickHandler;
+import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.Question;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.editarQuizVM;
@@ -32,6 +33,7 @@ public class questionList extends Fragment implements listadoQuestionAdapterOnCl
     private RecyclerView listadoQuestions;
     private editarQuizVM miVM;
     private listadoQuestionAdapter miAdapter;
+    Repositories repo = new Repositories();
 
 
     public questionList() {
@@ -67,19 +69,32 @@ public class questionList extends Fragment implements listadoQuestionAdapterOnCl
             @Override
             public void onChanged(@Nullable final List<Question> newList) {
 
-                //Momentaneo
-                ArrayList<Question> listaMomentanea = new ArrayList<>(newList);
+                if(miVM.get_quieroBorrar()){
 
-                miAdapter.update(listaMomentanea);
+                    miAdapter.notifyItemRemoved(miVM.get_ultimaPosicion());
 
-                listadoQuestions.setAdapter(miAdapter);
+                    miVM.set_quieroBorrar(false);
+
+                }else {
+
+                    ArrayList<Question> listaMomentanea = new ArrayList<>(newList);
+
+                    miAdapter.update(listaMomentanea);
+
+                    listadoQuestions.setAdapter(miAdapter);
+
+                }
+
+
+
+
 
             }
         };
 
         miVM.get_allQuestions().observe(this, questionListObserver);
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
 
@@ -89,9 +104,11 @@ public class questionList extends Fragment implements listadoQuestionAdapterOnCl
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
 
-                //miVM.get_allQuestions().removeObserver(questionListObserver); //Para hacer la animacion dentro
+                miVM.set_quieroBorrar(true);
+                miVM.set_ultimaPosicion(viewHolder.getAdapterPosition());
 
-                miAdapter.borrar(viewHolder.getAdapterPosition(), getContext());
+                repo.deleteQuestion(getContext(), miVM.get_allQuestions().getValue().get(viewHolder.getAdapterPosition()));
+
 
             }
 
