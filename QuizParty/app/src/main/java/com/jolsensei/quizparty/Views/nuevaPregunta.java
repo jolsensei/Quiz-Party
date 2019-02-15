@@ -7,6 +7,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jolsensei.quizparty.DDBB.Repositories;
@@ -16,9 +17,10 @@ import com.jolsensei.quizparty.Entidades.colors;
 import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.R;
 
-public class nuevaPregunta extends AppCompatActivity {
+public class nuevaPregunta extends AppCompatActivity implements View.OnClickListener {
 
     EditText pregunta, respuesta;
+    TextView deficionColor;
     RadioGroup dificultad, color;
     RadioButton facil, dificil, naranja, verde, marron, azul, rosa, amarillo;
     String nombreQuiz;
@@ -27,6 +29,8 @@ public class nuevaPregunta extends AppCompatActivity {
     boolean esUpdate;
 
     Repositories repo = new Repositories();
+
+    Quiz quizActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +47,11 @@ public class nuevaPregunta extends AppCompatActivity {
         pregunta = findViewById(R.id.nuevaPreguntaQuestion);
         respuesta = findViewById(R.id.nuevaPreguntaAnswer);
 
+        deficionColor = findViewById(R.id.definicionColorQuestionEdit);
+
         dificultad = findViewById(R.id.radioDificultad);
         color = findViewById(R.id.radioColor);
+
 
         facil = findViewById(R.id.radioFacil);
         dificil = findViewById(R.id.radioDificil);
@@ -55,6 +62,10 @@ public class nuevaPregunta extends AppCompatActivity {
         azul = findViewById(R.id.radioAzul);
         rosa = findViewById(R.id.radioRosa);
         amarillo = findViewById(R.id.radioAmarillo);
+
+        naranja.setOnClickListener(this);
+
+        quizActual = repo.getQuizByName(this, nombreQuiz);
 
         if (idPregunta != -1){
 
@@ -80,6 +91,7 @@ public class nuevaPregunta extends AppCompatActivity {
 
                 dificultad.check(R.id.radioFacil);
 
+
                 break;
 
             case HARD:
@@ -96,6 +108,8 @@ public class nuevaPregunta extends AppCompatActivity {
             case ORANGE:
 
                 color.check(R.id.radioNaranja);
+                deficionColor.setText(quizActual.getOrangeDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetanaranja);
 
                 break;
 
@@ -103,6 +117,8 @@ public class nuevaPregunta extends AppCompatActivity {
             case GREEN:
 
                 color.check(R.id.radioVerde);
+                deficionColor.setText(quizActual.getGreenDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetaverde);
 
                 break;
 
@@ -110,6 +126,8 @@ public class nuevaPregunta extends AppCompatActivity {
             case BROWN:
 
                 color.check(R.id.radioMarron);
+                deficionColor.setText(quizActual.getBrownDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetamarron);
 
                 break;
 
@@ -117,6 +135,8 @@ public class nuevaPregunta extends AppCompatActivity {
             case BLUE:
 
                 color.check(R.id.radioAzul);
+                deficionColor.setText(quizActual.getBlueDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetaazul);
 
                 break;
 
@@ -124,6 +144,8 @@ public class nuevaPregunta extends AppCompatActivity {
             case PINK:
 
                 color.check(R.id.radioRosa);
+                deficionColor.setText(quizActual.getPinkDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetarosa);
 
                 break;
 
@@ -131,6 +153,8 @@ public class nuevaPregunta extends AppCompatActivity {
             case YELLOW:
 
                 color.check(R.id.radioAmarillo);
+                deficionColor.setText(quizActual.getYellowDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetaamarilla);
 
                 break;
 
@@ -234,6 +258,68 @@ public class nuevaPregunta extends AppCompatActivity {
 
 
 
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+
+            case R.id.radioNaranja:
+
+                deficionColor.setText(quizActual.getOrangeDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetanaranja);
+
+                break;
+
+
+            case R.id.radioVerde:
+
+                color.check(R.id.radioVerde);
+                deficionColor.setText(quizActual.getGreenDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetaverde);
+
+                break;
+
+
+            case R.id.radioMarron:
+
+                color.check(R.id.radioMarron);
+                deficionColor.setText(quizActual.getBrownDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetamarron);
+
+                break;
+
+
+            case R.id.radioAzul:
+
+                color.check(R.id.radioAzul);
+                deficionColor.setText(quizActual.getBlueDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetaazul);
+
+                break;
+
+
+            case R.id.radioRosa:
+
+                color.check(R.id.radioRosa);
+                deficionColor.setText(quizActual.getPinkDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetarosa);
+
+                break;
+
+
+            case R.id.radioAmarillo:
+
+                color.check(R.id.radioAmarillo);
+                deficionColor.setText(quizActual.getYellowDef());
+                deficionColor.setBackgroundResource(R.drawable.tarjetaamarilla);
+
+                break;
+
+        }
 
 
     }

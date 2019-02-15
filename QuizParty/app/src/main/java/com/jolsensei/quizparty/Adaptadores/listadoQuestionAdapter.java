@@ -134,14 +134,12 @@ public class listadoQuestionAdapter extends RecyclerView.Adapter<listadoQuestion
 
 
 
-    public void borrar(int posicion, Context c){
+    public void borrar(int posicion){
 
 
 
-        Question aBorrar = listadoQuestion.get(posicion);
-
-        //this.listadoQuestion.remove(posicion);
-        //notifyItemRemoved(posicion);
+        this.listadoQuestion.remove(posicion);
+        notifyItemRemoved(posicion);
 
 
 

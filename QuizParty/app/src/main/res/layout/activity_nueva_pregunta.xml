@@ -16,6 +16,13 @@
         app:layout_constraintGuide_percent="0.2" />
 
     <android.support.constraint.Guideline
+        android:id="@+id/guideline52"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <android.support.constraint.Guideline
         android:id="@+id/guideline51"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -185,15 +192,15 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/tarjetablanca"
         android:ems="10"
-        android:lineSpacingMultiplier="1.1"
-        android:padding="16dp"
         android:gravity="start"
         android:hint="@string/escriba_su_pregunta"
         android:inputType="textMultiLine"
+        android:lineSpacingMultiplier="1.1"
+        android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline51"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline49" />
+        app:layout_constraintTop_toTopOf="@+id/guideline52" />
 
     <EditText
         android:id="@+id/nuevaPreguntaAnswer"
@@ -216,6 +223,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline51" />
+
+    <TextView
+        android:id="@+id/definicionColorQuestionEdit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/tarjetanaranja"
+        android:gravity="center"
+        android:textColor="@color/blancoFondo"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline49"
+        tools:text="Anime" />
 
 
 </android.support.constraint.ConstraintLayout>

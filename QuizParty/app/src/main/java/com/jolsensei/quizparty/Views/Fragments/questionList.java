@@ -71,7 +71,9 @@ public class questionList extends Fragment implements listadoQuestionAdapterOnCl
 
                 if(miVM.get_quieroBorrar()){
 
-                    miAdapter.notifyItemRemoved(miVM.get_ultimaPosicion());
+                    //miAdapter.notifyItemRemoved(miVM.get_ultimaPosicion());
+
+                    //Hacemos esto por que no queremos cargar la lista a pelo de nuevo
 
                     miVM.set_quieroBorrar(false);
 
@@ -94,7 +96,7 @@ public class questionList extends Fragment implements listadoQuestionAdapterOnCl
 
         miVM.get_allQuestions().observe(this, questionListObserver);
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
 
@@ -107,8 +109,8 @@ public class questionList extends Fragment implements listadoQuestionAdapterOnCl
                 miVM.set_quieroBorrar(true);
                 miVM.set_ultimaPosicion(viewHolder.getAdapterPosition());
 
-                repo.deleteQuestion(getContext(), miVM.get_allQuestions().getValue().get(viewHolder.getAdapterPosition()));
-
+                miAdapter.borrar(miVM.get_ultimaPosicion());
+                repo.deleteQuestion(getContext(), miVM.get_allQuestions().getValue().get(miVM.get_ultimaPosicion()));
 
             }
 

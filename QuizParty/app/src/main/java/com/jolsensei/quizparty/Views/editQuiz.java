@@ -47,8 +47,9 @@ public class editQuiz extends AppCompatActivity {
 
         adapter = new editQuizAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new inputEditarQuiz(), "Quiz");
         adapter.addFragment(new questionList(), "Questions");
+        adapter.addFragment(new inputEditarQuiz(), "Quiz");
+
 
         editPager.setAdapter(adapter);
         editTab.setupWithViewPager(editPager);
