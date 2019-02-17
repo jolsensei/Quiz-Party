@@ -2,7 +2,9 @@ package com.jolsensei.quizparty.Views;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,12 +12,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import android.widget.Toast;
-
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapter;
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapterOnClickHandler;
 
-import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.Entidades.opcionMenu;
 import com.jolsensei.quizparty.Menus.BottomSheetDialog;
@@ -31,7 +30,6 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
     private listadoQuizAdapter miAdapter;
 
     private static int ultimoSeleccionado;
-
 
 
     @Override
@@ -96,7 +94,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
         ultimoSeleccionado = adapterPosition;
 
         BottomSheetDialog bottomSheet = new BottomSheetDialog();
-        bottomSheet.show(getSupportFragmentManager(), "exampleBottomSheet");
+        bottomSheet.show(getSupportFragmentManager(), "bottomSheet");
 
 
         return true;
@@ -140,9 +138,30 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
         if (opcion == opcionMenu.BORRAR){
 
-            miAdapter.borrar(ultimoSeleccionado, this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("¿Está seguro?");
+            builder.setMessage("Se borrarán todos los datos del Quiz")
+                    .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
 
-            
+
+                            miAdapter.borrar(ultimoSeleccionado, getApplicationContext());
+
+                        }
+                    })
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+
+
+                            dialog.dismiss();
+                        }
+                    });
+
+            builder.create();
+            builder.show();
+
+
             
         }else { //Editar
 

@@ -64,6 +64,11 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
         amarillo = findViewById(R.id.radioAmarillo);
 
         naranja.setOnClickListener(this);
+        verde.setOnClickListener(this);
+        marron.setOnClickListener(this);
+        azul.setOnClickListener(this);
+        rosa.setOnClickListener(this);
+        amarillo.setOnClickListener(this);
 
         quizActual = repo.getQuizByName(this, nombreQuiz);
 
@@ -277,7 +282,7 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
 
             case R.id.radioVerde:
 
-                color.check(R.id.radioVerde);
+
                 deficionColor.setText(quizActual.getGreenDef());
                 deficionColor.setBackgroundResource(R.drawable.tarjetaverde);
 
@@ -286,7 +291,7 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
 
             case R.id.radioMarron:
 
-                color.check(R.id.radioMarron);
+
                 deficionColor.setText(quizActual.getBrownDef());
                 deficionColor.setBackgroundResource(R.drawable.tarjetamarron);
 
@@ -295,7 +300,7 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
 
             case R.id.radioAzul:
 
-                color.check(R.id.radioAzul);
+
                 deficionColor.setText(quizActual.getBlueDef());
                 deficionColor.setBackgroundResource(R.drawable.tarjetaazul);
 
@@ -304,7 +309,7 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
 
             case R.id.radioRosa:
 
-                color.check(R.id.radioRosa);
+
                 deficionColor.setText(quizActual.getPinkDef());
                 deficionColor.setBackgroundResource(R.drawable.tarjetarosa);
 
@@ -313,7 +318,7 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
 
             case R.id.radioAmarillo:
 
-                color.check(R.id.radioAmarillo);
+
                 deficionColor.setText(quizActual.getYellowDef());
                 deficionColor.setBackgroundResource(R.drawable.tarjetaamarilla);
 
