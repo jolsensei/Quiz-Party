@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapter;
 import com.jolsensei.quizparty.Adaptadores.listadoQuizAdapterOnClickHandler;
@@ -31,6 +34,10 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
     private static int ultimoSeleccionado;
 
+    private TextView atras, nuevo;
+
+    Animation touch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +46,10 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagina_listado_quizs);
 
+        atras = findViewById(R.id.volverIcon);
+        nuevo = findViewById(R.id.addIcon);
 
+        touch = AnimationUtils.loadAnimation(this, R.anim.touch);
 
         miVM = ViewModelProviders.of(this).get(listadoQuizVM.class);
 
@@ -75,6 +85,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
     public void volverAtras(View view) {
 
+        atras.startAnimation(touch);
 
         super.onBackPressed();
 
@@ -139,8 +150,8 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
         if (opcion == opcionMenu.BORRAR){
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("¿Está seguro?");
-            builder.setMessage("Se borrarán todos los datos del Quiz")
+            builder.setTitle(R.string.dialogTitle);
+            builder.setMessage(R.string.dialogMessage)
                     .setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
@@ -162,6 +173,7 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
             builder.show();
 
 
+
             
         }else { //Editar
 
@@ -181,6 +193,8 @@ public class paginaListadoQuizs extends AppCompatActivity implements listadoQuiz
 
     public void addQuiz(View view) {
 
+
+        nuevo.startAnimation(touch);
 
         Intent intent = new Intent(this, nuevoQuiz.class);
 

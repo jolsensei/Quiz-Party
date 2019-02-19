@@ -23,6 +23,8 @@
     <string name="definici_n_de_colores">Definición de colores</string>
     <string name="escriba_su_pregunta">Escriba su pregunta</string>
     <string name="escriba_su_respuesta">Escriba su respuesta</string>
+    <string name="dialogTitle">¿Está seguro?</string>
+    <string name="dialogMessage">Se borrarán todos los datos del Quiz</string>
 
 
 </resources>

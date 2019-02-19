@@ -74,11 +74,15 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
 
         if (idPregunta != -1){
 
-
             cargarDatos();
             esUpdate = true;
 
 
+        }else {
+
+            //Cargar la primera definicion
+
+            deficionColor.setText(quizActual.getOrangeDef());
         }
 
     }
@@ -190,7 +194,6 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
                 qDificultad = difficulties.HARD;
 
                 break;
-
 
         }
 

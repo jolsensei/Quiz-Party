@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -19,11 +21,14 @@ public class nuevoQuiz extends AppCompatActivity {
     FrameLayout nuevoQuizContainer;
     TextView iconoGuardar;
 
+    Animation touch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_quiz);
 
+        touch = AnimationUtils.loadAnimation(this, R.anim.touch);
 
         nuevoQuizContainer = findViewById(R.id.nuevoQuizContainer);
 
@@ -39,6 +44,8 @@ public class nuevoQuiz extends AppCompatActivity {
 
 
     public void guardarQuiz(View view) {
+
+        iconoGuardar.startAnimation(touch);
 
         FragmentManager fm = getSupportFragmentManager();
 
