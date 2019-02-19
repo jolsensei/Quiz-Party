@@ -1,9 +1,8 @@
 package com.jolsensei.quizparty.Views;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -12,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.jolsensei.quizparty.R;
-import com.jolsensei.quizparty.Views.Fragments.botones;
 import com.jolsensei.quizparty.Views.Fragments.inputNuevoQuiz;
 
 public class nuevoQuiz extends AppCompatActivity {

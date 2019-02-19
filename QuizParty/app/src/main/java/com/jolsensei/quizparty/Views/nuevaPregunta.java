@@ -1,9 +1,11 @@
 package com.jolsensei.quizparty.Views;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,14 +18,17 @@ import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.Entidades.colors;
 import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.R;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
 public class nuevaPregunta extends AppCompatActivity implements View.OnClickListener {
 
     EditText pregunta, respuesta;
-    TextView deficionColor;
+    TextView deficionColor, botonGuardar;
     RadioGroup dificultad, color;
     RadioButton facil, dificil, naranja, verde, marron, azul, rosa, amarillo;
     String nombreQuiz;
+
+    Animation touch;
 
     int idPregunta;
     boolean esUpdate;
@@ -40,9 +45,12 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
 
         setContentView(R.layout.activity_nueva_pregunta);
 
+        touch = AnimationUtils.loadAnimation(this, R.anim.touch);
 
         nombreQuiz = getIntent().getStringExtra("nombreQuiz");
         idPregunta = getIntent().getIntExtra("idPregunta",-1);
+
+        botonGuardar = findViewById(R.id.iconoGuardarQuestion);
 
         pregunta = findViewById(R.id.nuevaPreguntaQuestion);
         respuesta = findViewById(R.id.nuevaPreguntaAnswer);
@@ -179,6 +187,7 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
         difficulties qDificultad = null;
         colors qColor = null;
 
+        botonGuardar.startAnimation(touch);
 
         switch (dificultad.getCheckedRadioButtonId()){
 
@@ -244,7 +253,8 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
 
         if(nuevaPregunta.getQuestion().equals("") || nuevaPregunta.getAnswer().equals("")){
 
-            Toast.makeText(this, "No puedes dejar informacion en blanco", Toast.LENGTH_SHORT).show();
+
+            DynamicToast.makeWarning(this, "No puede insertar campos vacíos").show();
 
         }else {
 
@@ -253,10 +263,13 @@ public class nuevaPregunta extends AppCompatActivity implements View.OnClickList
                 nuevaPregunta.setId(idPregunta);
                 repo.updateQuestion(this, nuevaPregunta);
 
+                DynamicToast.makeSuccess(this, "Actualizado con éxito").show();
+
             }else {
 
                 repo.insertNewQuestion(this, nuevaPregunta);
 
+                DynamicToast.makeSuccess(this, "Insertado con éxito").show();
             }
 
 

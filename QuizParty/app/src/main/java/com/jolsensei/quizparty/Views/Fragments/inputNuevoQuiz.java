@@ -1,9 +1,8 @@
 package com.jolsensei.quizparty.Views.Fragments;
 
-import android.arch.lifecycle.ViewModelProviders;
+
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +12,13 @@ import android.widget.Toast;
 import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.R;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
 
 public class inputNuevoQuiz extends Fragment{
 
-    EditText nombre, naranja, verde, marron, azul, rosa, amarillo;
+    private EditText nombre, naranja, verde, marron, azul, rosa, amarillo;
+
 
     public inputNuevoQuiz() {
         // Required empty public constructor
@@ -56,7 +57,8 @@ public class inputNuevoQuiz extends Fragment{
         if (nuevoQuiz.getBlueDef().equals("") || nuevoQuiz.getBrownDef().equals("") || nuevoQuiz.getGreenDef().equals("") || nuevoQuiz.getOrangeDef().equals("")
                 || nuevoQuiz.getPinkDef().equals("") || nuevoQuiz.getYellowDef().equals("") || nuevoQuiz.getName().equals("")){
 
-            Toast.makeText(getContext(), "No puede insertar campos vacios", Toast.LENGTH_SHORT).show();
+
+            DynamicToast.makeWarning(getContext(), "No puede insertar campos vacíos").show();
 
         }else {
 

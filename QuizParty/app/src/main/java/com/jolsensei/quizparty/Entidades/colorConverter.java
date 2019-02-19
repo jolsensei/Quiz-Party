@@ -1,6 +1,6 @@
 package com.jolsensei.quizparty.Entidades;
 
-import android.arch.persistence.room.TypeConverter;
+import androidx.room.TypeConverter;
 
 public class colorConverter {
 

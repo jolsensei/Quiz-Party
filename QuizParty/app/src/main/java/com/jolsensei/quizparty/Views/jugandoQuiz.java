@@ -1,22 +1,20 @@
 package com.jolsensei.quizparty.Views;
 
-import android.arch.lifecycle.Observer;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.Observer;
 
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProviders;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
 import com.jolsensei.quizparty.Entidades.Question;
-import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.Entidades.difficulties;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.jugandoQuizVM;

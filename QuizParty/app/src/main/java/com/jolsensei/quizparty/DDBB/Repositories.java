@@ -1,7 +1,7 @@
 package com.jolsensei.quizparty.DDBB;
 
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
 import android.widget.Toast;

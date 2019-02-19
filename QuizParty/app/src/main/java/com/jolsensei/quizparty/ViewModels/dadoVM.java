@@ -1,13 +1,7 @@
 package com.jolsensei.quizparty.ViewModels;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.content.Context;
-
-import com.jolsensei.quizparty.DDBB.Repositories;
-import com.jolsensei.quizparty.Entidades.Quiz;
-
-import java.util.ArrayList;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 public class dadoVM extends ViewModel  {
 

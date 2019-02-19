@@ -1,15 +1,16 @@
 package com.jolsensei.quizparty.Views.Fragments;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
-import android.net.Uri;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,13 +19,16 @@ import com.jolsensei.quizparty.DDBB.Repositories;
 import com.jolsensei.quizparty.Entidades.Quiz;
 import com.jolsensei.quizparty.R;
 import com.jolsensei.quizparty.ViewModels.editarQuizVM;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
 
 public class inputEditarQuiz extends Fragment implements View.OnClickListener {
 
-    EditText nombre, naranja, verde, marron, azul, rosa, amarillo;
-    TextView guardar;
-    editarQuizVM miVM;
+    private EditText naranja, verde, marron, azul, rosa, amarillo;
+    private TextView guardar;
+    private editarQuizVM miVM;
+
+    Animation touch;
 
     public inputEditarQuiz() {
         // Required empty public constructor
@@ -44,6 +48,8 @@ public class inputEditarQuiz extends Fragment implements View.OnClickListener {
         amarillo = view.findViewById(R.id.inputDefAmarillaEdit);
 
         guardar = view.findViewById(R.id.iconoGuardarEditar);
+
+        touch = AnimationUtils.loadAnimation(getContext(), R.anim.touch);
 
 
         return view;
@@ -77,9 +83,9 @@ public class inputEditarQuiz extends Fragment implements View.OnClickListener {
 
     public void guardarCambiosQuiz() {
 
+        guardar.startAnimation(touch);
+
         Repositories repo = new Repositories();
-
-
 
         Quiz editQuiz = new Quiz(miVM.get_editedQuiz().getValue().getName(), naranja.getText().toString(),
                 verde.getText().toString(), azul.getText().toString(),
@@ -89,14 +95,15 @@ public class inputEditarQuiz extends Fragment implements View.OnClickListener {
         if (editQuiz.getBlueDef().equals("") || editQuiz.getBrownDef().equals("") || editQuiz.getGreenDef().equals("") || editQuiz.getOrangeDef().equals("")
                 || editQuiz.getPinkDef().equals("") || editQuiz.getYellowDef().equals("")){
 
-            Toast.makeText(getContext(), "No puede insertar campos vacios", Toast.LENGTH_SHORT).show();
+
+            DynamicToast.makeWarning(getContext(), "No puede insertar campos vacíos").show();
 
         }else {
 
             repo.updateQuiz(getContext(), editQuiz);
 
 
-            Toast.makeText(getContext(), "Guardado con éxito", Toast.LENGTH_SHORT).show();
+            DynamicToast.makeSuccess(getContext(), "Actualizado con éxito").show();
         }
 
 

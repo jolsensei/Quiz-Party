@@ -1,18 +1,18 @@
 package com.jolsensei.quizparty.Adaptadores;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
 public class editQuizAdapter extends FragmentPagerAdapter {
 
-    private ArrayList<android.support.v4.app.Fragment> fragments;
+    private ArrayList<Fragment> fragments;
     private ArrayList<String> titles;
 
 
-    public editQuizAdapter(android.support.v4.app.FragmentManager fm) {
+    public editQuizAdapter(FragmentManager fm) {
 
         super(fm);
         this.fragments = new ArrayList<>();
@@ -28,7 +28,7 @@ public class editQuizAdapter extends FragmentPagerAdapter {
 
     // Returns the fragment to display for that page
     @Override
-    public android.support.v4.app.Fragment getItem(int position) {
+    public Fragment getItem(int position) {
 
         return fragments.get(position);
     }
@@ -40,7 +40,7 @@ public class editQuizAdapter extends FragmentPagerAdapter {
         return titles.get(position);
     }
 
-    public void addFragment(android.support.v4.app.Fragment fragment, String title){
+    public void addFragment(Fragment fragment, String title){
 
         fragments.add(fragment);
         titles.add(title);
