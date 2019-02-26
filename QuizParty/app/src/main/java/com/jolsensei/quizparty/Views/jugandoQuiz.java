@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -30,11 +32,11 @@ public class jugandoQuiz extends AppCompatActivity implements preguntaYrespuesta
     jugandoQuizVM miVM;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jugando_quiz);
-
 
         miVM = ViewModelProviders.of(this).get(jugandoQuizVM.class);
 

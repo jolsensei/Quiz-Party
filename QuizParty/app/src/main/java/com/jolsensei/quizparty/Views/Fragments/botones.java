@@ -9,6 +9,8 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,13 +22,14 @@ import com.jolsensei.quizparty.Views.diceTable;
 
 public class botones extends Fragment implements View.OnClickListener {
 
-    jugandoQuizVM miVM;
-    Button botonNaranja, botonVerde, botonMarron, botonAzul, botonRosa, botonAmarillo;
+    private jugandoQuizVM miVM;
+    private Button botonNaranja, botonVerde, botonMarron, botonAzul, botonRosa, botonAmarillo;
 
-    TextView dado, info, descripcionNaranja, descripcionVerde, descripcionMarron, descripcionAzul, descripcionRosa, descripcionAmarilla;
+    private TextView dado, info, descripcionNaranja, descripcionVerde, descripcionMarron, descripcionAzul, descripcionRosa, descripcionAmarilla;
 
     private boolean descripcionActiva;
 
+    private Animation touch;
 
     public botones() {
         // Required empty public constructor
@@ -35,6 +38,8 @@ public class botones extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        touch = AnimationUtils.loadAnimation(getContext(), R.anim.touch);
 
         View view = inflater.inflate(R.layout.fragment_botones, container, false);
 
@@ -138,12 +143,15 @@ public class botones extends Fragment implements View.OnClickListener {
 
             case R.id.iconoInfo:
 
+                info.startAnimation(touch);
 
                 showQuestionDescriptions();
 
                 break;
 
             case R.id.iconoDado:
+
+                dado.startAnimation(touch);
 
                 Intent intent = new Intent(view.getContext(), diceTable.class);
 
